@@ -15,8 +15,6 @@ https://brew.sh/
 brew install gcc imagemagick ffmpeg
 ```
 
-+ If you installed brew in an uncommon place, make sure that homebrew/bin is under your PATH.
-
 ### Python environment dedicated for PhysiCell
 
 In this manual we will install everithing PhysiCell realted place in the ~/src folder.
@@ -30,6 +28,7 @@ Here we demonstrate, how to generate the environment with the regular python. If
 
 ```bash
 cd ~
+mkdir -p ~/src
 python3 -m venv src/physienv
 echo "alias physienv=\"source /Users/$USER/src/physienv/bin/activate\"" >> ~/.zshenv
 source ~/.zshenv
@@ -46,9 +45,8 @@ physienv
 + Download PhysiCell-Studio and install it in the ~/src folder.
 
 ```bash
-mkdir -p ~/src
 cd ~/src
-# download studio with some non git commands
+git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
 pip3 install -r PhysiCell-Studio/requirements.txt
 cd ~/src/physienv/bin
 echo "python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py $*" > pcstudio
@@ -65,10 +63,12 @@ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 ### PhysiCell
 
+bue 20250221: can maybe be refinded, because it assumes brew is installed on default location.
+
 ```bash
 cd ~/src
-#echo export PHYSICELL_CPP=g++-00 >> ~/.zshenv
-#download physicell with some non git commands
+echo export PHYSICELL_CPP=$(ls /opt/homebrew/bin/ | grep '^g++-[0-9][0-9]') >> ~/.zshenv
+git clone https://github.com/MathCancer/PhysiCell.git
 ```
 
 ### physicell data loader
