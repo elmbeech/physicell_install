@@ -1,4 +1,4 @@
-# Setup PhysiCell on Apple
+# Setup PhysiCell on macOS &#x1F350;
 
 
 ## Minimum installation
