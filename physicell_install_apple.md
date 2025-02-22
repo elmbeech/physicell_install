@@ -3,18 +3,6 @@
 
 ## &#x1F34E; Minimum installation
 
-### Brew
-
-+ Follow the instruction to download and install brew. Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and execute it.
-
-https://brew.sh/
-
-+ In the Terminal, after you have brew install, run the following commands:
-
-```bash
-brew install gcc imagemagick ffmpeg
-```
-
 ### Python environment dedicated for PhysiCell
 
 In this manual we will install everithing PhysiCell realted place in the ~/src folder.
@@ -23,6 +11,8 @@ If you prefere an oder foldername please adjust the commands accordingly.
 We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
 We will name this python3 environment physienv, and we install it in the src folder where just before have installed PhysiCell.
 Here we demonstrate, how to generate the environment with the regular python. If you run mamba or conda, please adjust the commands accordingly.
+
+Open a Terminal (found at Applications / Utilities).
 
 + Generate a python environment named physienv and an alias for this environment for activation:
 
@@ -60,6 +50,18 @@ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
 ## &#x1F34E; Advanced installation
+
+### Brew
+
++ Follow the instruction to download and install brew. Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and execute it.
+
+https://brew.sh/
+
++ In the Terminal, after you have brew install, run the following commands:
+
+```bash
+brew install gcc imagemagick ffmpeg
+```
 
 ### PhysiCell
 
