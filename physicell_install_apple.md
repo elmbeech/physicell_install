@@ -1,7 +1,7 @@
-# Setup PhysiCell on macOS &#x1F34F; &#x1F34E;
+# Setup PhysiCell on macOS &#x1F34F;
 
 
-## Minimum installation
+## &#x1F34E; Minimum installation
 
 ### Brew
 
@@ -59,7 +59,7 @@ cd ~
 https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
-## Advanced installation
+## &#x1F34E; Advanced installation
 
 ### PhysiCell
 
@@ -84,7 +84,7 @@ pip3 install pcdl
 ```
 
 
-## IDE VSCode integration
+## &#x1F34E; IDE VSCode integration
 
 1. Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .
 
