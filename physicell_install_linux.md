@@ -89,7 +89,11 @@ sudo apt install git
 ```bash
 mkdir -p ~/src
 cd ~/src
-git clone https://github.com/MathCancer/PhysiCell.git
+curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
+unzip download.zip
+rm download.zip
+rm -fr PhysiCell
+mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
 ```
 
 ### &#x2728; Test the PhyiCell installation with the template sample project:
@@ -132,14 +136,18 @@ cd ~
 python3 -m venv src/pcpyenv
 if ! grep -Fq 'alias pcpyenv='  ~/.bash_aliases
 then
-    echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
+  echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
 else
-    echo 'WARNING @ ~/.bash_aliases : alias for pcpyenv= alredy exists!\n'
+  echo 'WARNING @ ~/.bash_aliases : alias for pcpyenv= alredy exists!'
 fi
 source ~/.bash_aliases
 pcpyenv
 cd ~/src
-git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
+curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
+unzip download.zip
+rm download.zip
+rm -fr PhysiCell-Studio
+mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
 pip3 install -r PhysiCell-Studio/requirements.txt
 cd ~/src/pcpyenv/bin/
 echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
@@ -158,7 +166,6 @@ pcstudio
 ### &#x2728; Official PhysiCell Studio manual:
 
 https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
-
 
 
 ## &#x1F427; &#x1F427; &#x1F427; &#x1F427; Advanced installation
