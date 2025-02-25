@@ -130,7 +130,12 @@ If you run mamba or conda, please adjust the commands accordingly.
 ```bash
 cd ~
 python3 -m venv src/pcpyenv
-echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
+if ! grep -Fq 'alias pcpyenv='  ~/.bash_aliases
+then
+    echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
+else
+    echo "WARNING @ ~/.bash_aliases : alias for pcpyenv= alredy exists!\n"
+fi
 source ~/.bash_aliases
 pcpyenv
 cd ~/src
