@@ -134,7 +134,7 @@ echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_
 source ~/.bash_aliases
 pcpyenv
 cd ~/src
-git https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
+git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
 pip3 install -r PhysiCell-Studio/requirements.txt
 cd ~/src/pcpyenv/bin/
 echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
