@@ -6,7 +6,7 @@ If you prefere another foldername please adjust the commands accordingly.
 
 ## &#x1F34E; Operating system dependencies.
 
-### &#x2728; Install Brew
+### &#x2728; Install Brew:
 
 Follow the instruction to download and install brew.
 Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and execute it.
@@ -29,7 +29,7 @@ echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshe
 git clone https://github.com/MathCancer/PhysiCell.git
 ```
 
-### &#x2728; Test the PhyiCell installation with the template sample project.
+### &#x2728; Test the PhyiCell installation with the template sample project:
 
 ```bash
 cd ~/src/PhysiCell
@@ -62,7 +62,7 @@ We will name this python3 environment pcpyenv (PhysiCell Python environment).
 For generate the environment with assume a regular python installation.
 If you run mamba or conda, please adjust the commands accordingly.
 
-### &#x2728; Install PhysiCell-Studio.
+### &#x2728; Install PhysiCell-Studio:
 
 Open a Terminal (found at Applications / Utilities).
 
@@ -82,7 +82,7 @@ chmod 775 pcstudio
 cd ~
 ```
 
-### &#x2728; Test the PhysiCell-Studio installation.
+### &#x2728; Test the PhysiCell-Studio installation:
 
 ```bash
 cd ~/src/PhysiCell
@@ -97,13 +97,13 @@ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 ## &#x1F34E; &#x1F34E; &#x1F34E; &#x1F34E; &#x1F34E; Advanced installation
 
-### &#x2728; Install PhysiCell data loader (pcdl) and iPython
+### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
 
 ```bash
 pcpyenv
 pip3 install pcdl ipython
 ```
-### &#x2728; Test the pcdl installation
+### &#x2728; Test the pcdl installation:
 
 ```bash
 ipython
