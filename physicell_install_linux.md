@@ -127,7 +127,7 @@ If you run mamba or conda, please adjust the commands accordingly.
 
 ```bash
 cd ~/src
-python3 -m venv src/pcpyenv
+python3 -m venv pcpyenv
 if ! grep -Fq 'alias pcpyenv='  ~/.bash_aliases
 then
   echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
