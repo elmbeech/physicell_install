@@ -9,19 +9,19 @@ If you prefere another foldername please adjust the commands accordingly.
 
 ## &#x1F427; Operating system library dependencies.
 
-+ Update the package manager.
+### Update the package manager.
 
 ```bash
 sudo apt update && upgrade
 ```
 
-+ Install GCC (required by PhysiCell).
+### Install GCC (required by PhysiCell).
 
 ```bash
 sudo apt install build-essential
 ```
 
-+ Install Image Magick (required by PhysiCell).
+### Install Image Magick (required by PhysiCell).
 
 ImageMagick is used for making jpeg and gif images from PhysiCell svg image output.
 
@@ -55,24 +55,24 @@ chmod 775 magick
 which magick
 ```
 
-+ Install FFmpeg, Tar, Gzip, and Unzip (required by PhysiCell).
+### Install FFmpeg, Tar, Gzip, and Unzip (required by PhysiCell).
 
 ```bash
 sudo apt install ffmpeg tar gzip unzip
 ```
 
-+ Install the Qt 5 library (required by PhysiCell-Studio).
+### Install the Qt 5 library (required by PhysiCell-Studio).
 ```
 sudo apt install qtbase5-dev
 ```
 
-+ Python is most probbaly already installed, but pip might be missing (required by PhysiCell-Studio and pcdl).
+### Python is most probbaly already installed, but pip might be missing (required by PhysiCell-Studio and pcdl).
 
 ```bash
 sudo apt install python3-pip
 ```
 
-+ Install git.
+### Install git.
 
 ```bash
 sudo apt install git
@@ -81,7 +81,7 @@ sudo apt install git
 
 ## &#x1F427; Basic PhyiCell installation
 
-+  Install  PhysiCell.
+### Install  PhysiCell.
 
 ```bash
 mkdir -p ~/src
@@ -89,7 +89,7 @@ cd ~/src
 git clone https://github.com/MathCancer/PhysiCell.git
 ```
 
-+ Test the installation with the template sample project.
+### Test the installation with the template sample project.
 
 ```bash
 cd ~/src/PhysiCell
@@ -122,7 +122,7 @@ We will name this python3 environment pcpyenv (PhysiCell Python environment).
 For generate the environment with assume a regular python installation.
 If you run mamba or conda, please adjust the commands accordingly.
 
-+ Install PhysiCell-Studio.
+### Install PhysiCell-Studio.
 
 ```bash
 cd ~
@@ -139,7 +139,7 @@ chmod 775 pcstudio
 cd ~
 ```
 
-+ Test the installation.
+### Test the installation.
 
 ```bash
 cd ~/src/PhysiCell
@@ -147,7 +147,7 @@ pcpyenv
 pcstudio
 ```
 
-+ To learn more, please check out the official PhysiCell Studio manual:
+### Official PhysiCell Studio manual:
 
 https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
@@ -155,13 +155,13 @@ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 ## &#x1F427; Advanced installation
 
-+ Install PhysiCell data loader and iPython
+### Install PhysiCell data loader (pcdl) and iPython
 
 ```bash
 pcpyenv
 pip3 install pcdl ipython
 ```
-+ Test installation
+### Test installation
 
 ```bash
 ipython
@@ -173,7 +173,7 @@ import pcdl
 exit()
 ```
 
-To learn more, please check put the official pcdl manual:
+### Official pcdl manual:
 
 + https://github.com/PhysiCell-Tools/python-loader
 
