@@ -40,7 +40,7 @@ cd ~/src
 git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
 pip3 install -r PhysiCell-Studio/requirements.txt
 cd ~/src/pcpyenv/bin
-echo "python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py $*" > pcstudio
+echo "python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
 chmod 775 pcstudio
 cd ~
 ```
