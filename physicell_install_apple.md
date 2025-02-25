@@ -1,7 +1,8 @@
-# Setup PhysiCell on macOS <!-- &#x1F34F; -->
+# Setup PhysiCell on macOS
+<!-- &#x1F34F; -->
 
 
-## &#x1F34E; Minimum installation
+## &#x1F34E; Essential installation
 
 ### Python environment dedicated for PhysiCell
 
@@ -9,25 +10,25 @@ In this manual we will install everithing PhysiCell realted place in the ~/src f
 If you prefere an oder foldername please adjust the commands accordingly.
 
 We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
-We will name this python3 environment physienv, and we install it in the src folder where just before have installed PhysiCell.
-Here we demonstrate, how to generate the environment with the regular python. If you run mamba or conda, please adjust the commands accordingly.
+We will name this python3 environment pcpyenv (PhysiCell Python enivironment), and we install it in the src folder.
+Here we generate the environment with the regular python. If you run mamba or conda, please adjust the commands accordingly.
 
 Open a Terminal (found at Applications / Utilities).
 
-+ Generate a python environment named physienv and an alias for this environment for activation:
++ Generate a python environment named pcpyenv and an alias for this environment for activation:
 
 ```bash
 cd ~
 mkdir -p ~/src
-python3 -m venv src/physienv
-echo "alias physienv=\"source /Users/$USER/src/physienv/bin/activate\"" >> ~/.zshenv
+python3 -m venv src/pcpyenv
+echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.zshenv
 source ~/.zshenv
 ```
 
-+ Activate the physienv python environment using the alias generated before:
++ Activate the pcpyenv python environment using the alias generated before:
 
 ```bash
-physienv
+pcpyenv
 ```
 
 ### PhysiCell Studio
@@ -38,7 +39,7 @@ physienv
 cd ~/src
 git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
 pip3 install -r PhysiCell-Studio/requirements.txt
-cd ~/src/physienv/bin
+cd ~/src/pcpyenv/bin
 echo "python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py $*" > pcstudio
 chmod 775 pcstudio
 cd ~
@@ -65,11 +66,9 @@ brew install gcc imagemagick ffmpeg
 
 ### PhysiCell
 
-bue 20250221: can maybe be refinded, because it assumes brew is installed on default location.
-
 ```bash
 cd ~/src
-echo export PHYSICELL_CPP=$(ls /opt/homebrew/bin/ | grep '^g++-[0-9][0-9]') >> ~/.zshenv
+echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshenv
 git clone https://github.com/MathCancer/PhysiCell.git
 ```
 
@@ -118,10 +117,10 @@ Extension: Python Install
 Extension: C/C++ Install
 ```
 
-5. Link physienv (the python environment we generated above):
+5. Link pcpyenv (the python environment we generated above):
 
 ```
 View | Command Palette… | Python: Select Interpreter |
-Enter interpreter path… | Find… | src/physienv
+Enter interpreter path… | Find… | src/pcpyenv
 ```
 
