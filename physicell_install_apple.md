@@ -29,7 +29,7 @@ echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshe
 git clone https://github.com/MathCancer/PhysiCell.git
 ```
 
-### &#x2728; Test the installation with the template sample project.
+### &#x2728; Test the PhyiCell installation with the template sample project.
 
 ```bash
 cd ~/src/PhysiCell
@@ -82,7 +82,7 @@ chmod 775 pcstudio
 cd ~
 ```
 
-### &#x2728; Test the installation.
+### &#x2728; Test the PhysiCell-Studio installation.
 
 ```bash
 cd ~/src/PhysiCell
@@ -103,7 +103,7 @@ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 pcpyenv
 pip3 install pcdl ipython
 ```
-### &#x2728; Test the installation
+### &#x2728; Test the pcdl installation
 
 ```bash
 ipython
