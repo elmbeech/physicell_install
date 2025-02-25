@@ -75,12 +75,6 @@ Python is most probbaly already installed, but pip might be missing (required by
 sudo apt install python3-pip
 ```
 
-### Install git
-
-```bash
-sudo apt install git
-```
-
 
 ## &#x1F427; &#x1F427; Basic PhyiCell installation
 
