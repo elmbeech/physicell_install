@@ -126,7 +126,7 @@ If you run mamba or conda, please adjust the commands accordingly.
 ### &#x2728; Install PhysiCell-Studio:
 
 ```bash
-cd ~
+cd ~/src
 python3 -m venv src/pcpyenv
 if ! grep -Fq 'alias pcpyenv='  ~/.bash_aliases
 then
@@ -136,7 +136,6 @@ else
 fi
 source ~/.bash_aliases
 pcpyenv
-cd ~/src
 curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
 unzip download.zip
 rm download.zip
@@ -146,7 +145,7 @@ pip3 install -r PhysiCell-Studio/requirements.txt
 cd ~/src/pcpyenv/bin/
 echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
 chmod 775 pcstudio
-cd ~
+cd ~/src
 ```
 
 ### &#x2728; Test the PhysiCell-Studio installation:
