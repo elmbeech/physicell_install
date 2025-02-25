@@ -1,37 +1,79 @@
 # Setup PhysiCell on Windows
 
-## &#x1FA9F; Essential installation
+We will install everithing PhysiCell realted under the src folder that we will place in your Windows Home directory.
+If you prefere another foldername please adjust the commands accordingly.
 
-### Python environment dedicated for PhysiCell
+## &#x1FA9F; Operating system dependencies.
 
-We will generate a python3 environment with the default Windows python installation, where we will install all PhysiCell modelling related python libraries. We will name this Python3 environment pcpyenv (PhysiCell Python environment), and we install it in the src folder where just before have installed PhysiCell.
-Here we generate the environment with the regular python. If you run mamba or conda, please adjust the commands accordingly.
++ Download and install MSYS2 x86_64.
 
-Open the Windows PowerShell terminal!
-The first command will let you know if you have python installed. If not, then please go to the Microsoft Store and install the latest release available from the Python Software Foundation.
+https://www.msys2.org/
 
-```powershell
-Get-Command python.exe
++ Install GCC, ImageMagick, Unzip, Zip, and ca-certificates
+
+Open the MSYS2 MINGW64 shell.
+
+```bash
+pacman -S mingw-w64-x86_64-gcc make
+pacman -S mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ffmpeg
+pacman -S unzip zip
+pacman -S mingw-w64-x86_64-ca-certificates
+pacman -S git
 ```
 
+
+## &#x1FA9F; Basic PhyiCell installation
+
+Open the MSYS2 MINGW64 shell.
+
+```bash
+mkdir -p /c/Users/$USER/src
+cd /c/Users/$USER/src
+git clone https://github.com/MathCancer/PhysiCell.git
+```
+
++ Test the installation with the template sample project.
+
+```bash
+cd ~/src/PhysiCell
+```
+```bash
+make template
+```
+```bash
+make -j8
+```
+```bash
+./project
+```
+```bash
+make jpeg
+```
+```bash
+make gif
+```
+```bash
+make movie
+```
+
+
+## &#x1FA9F; Essential installation
+
+We will generate a python3 environment with the default python installation.
+
++ Install Python
+
+If you not already have installed python, please go to the Microsoft Stor and install the latest Python from the Python Software Foundation.
+
++ Install PhysiCell-Studio.
+
+Open a PowerShell.
 
 ```powershell
 Set-Location ~
-python.exe -m venv src/pcpyenv
+python.exe -m venv src\pcpyenv
 Set-Alias -Name pcpyenv -Value C:\Users\$USER\src\pcpyenv\Scripts\activate"
-```
-
-+ Activate the pcpyenv python environment using the alias generated before:
-
-```powershell
 pcpyenv
-```
-
-### PhysiCell Studio
-
-+ Download PhysiCell-Studio and install it in the ~/src folder.
-
-```powershell
 Set-Location ~\src
 git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
 pip3.exe install -r PhysiCell-Studio\requirements.txt
@@ -40,7 +82,112 @@ echo "python3 C:\Users\$USER\src\PhysiCell-Studio\bin\studio.py $*" > pcstudio.e
 Set-Location ~
 ```
 
+```
+cd ~
+python3 -m venv src/pcpyenv
+echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
+source ~/.bash_aliases
+pcpyenv
+cd ~/src
+git https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
+pip3 install -r PhysiCell-Studio/requirements.txt
+cd ~/src/pcpyenv/bin/
+echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
+chmod 775 pcstudio
+cd ~
+```
+
++ Test the installation.
+
+```powershell
+Set-Location ~/src/PhysiCell
+pcpyenv
+pcstudio
+```
+
++ To learn more, please check out the official PhysiCell Studio manual:
+
+https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
+
+
+
 ## &#x1FA9F; Advanced installation
 
+Open a PowerShell or MSYS2 MINGW64 shell.
+
++ Install PhysiCell data loader and iPython
+
+```bash
+pcpyenv
+pip3.exe install pcdl ipython
+```
++ Test installation
+
+```bash
+ipython
+```
+```python
+import pcdl
+```
+```python
+exit()
+```
+
+To learn more, please check put the official pcdl manual:
+
++ https://github.com/PhysiCell-Tools/python-loader
 
 
+
+## &#x1FA9F; IDE VSCode integration (optional)
+
+1. Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .
+
+2. Generate a vs code profile for physicell:
+
+```
+File | New Window with Profile
+Name: physicell
+Icon: choose something cool.
+Create
+Add Folder: Home/src
+click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile > physicell
+```
+
+3. Open the Folder:
+
+```
+File | Open Folder… | src | Open
+Yes, I trust the authors
+```
+
+4. Install the official python and C++ extensions into the profile:
+
+```
+click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile > physicell
+Extension: Python Install
+Extension: C/C++ Install
+```
+
+5. Link pcpyenv (the python environment we generated above):
+
+```
+View | Command Palette… | Python: Select Interpreter |
+Enter interpreter path… | Find… | src/pcpyenv
+```
+
+6. Link msys2 MINGW64 as default shelll:
+
+```
+View | Command Palette… | Preferences: Open Workspace Settings (JSON)
+```
+
+copy the msys2 configuration json for visual studio code (not sublime text!) found at  https://www.msys2.org/docs/ides-editors/#visual-studio-code and pasted it into the vs code settings.json .
+
+```
+close the settings.json tab # a dialog window will pop up.
+click Save
+Terminal| New Terminal # a msys2 shell integrated into the vs code IDE should open.
+```
