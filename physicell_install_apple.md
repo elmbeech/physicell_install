@@ -25,12 +25,20 @@ brew install gcc imagemagick ffmpeg
 ```bash
 mkdir -p ~/src
 cd ~/src
-if ! grep -Fq 'export PHYSICELL_CPP=' ~/.zshenv
+if ! grep -Fq 'export PHYSICELL_CPP=' ~/.zshrc
 then
-    echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshenv
+    echo export PHYSICELL_CPP=$(bash -c "compgen -c" | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshrc
 else
-    echo 'WARNING @ ~/.zshenv : enviroment variable PHYSICELL_CPP alredy exists!'
+    echo 'WARNING @ ~/.zshrc : enviroment variable PHYSICELL_CPP alredy exists!'
 fi
+if ! grep -Fq 'export PHYSICELL_CPP=' ~/.bashrc
+then
+    echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.bashrc
+else
+    echo 'WARNING @ ~/.bashrc : enviroment variable PHYSICELL_CPP alredy exists!'
+fi
+source ~/.zshrc
+source ~/.bashrc
 curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
 unzip download.zip
 rm download.zip
@@ -78,13 +86,20 @@ Open a Terminal (found at Applications / Utilities).
 ```bash
 cd ~/src
 python3 -m venv pcpyenv
-if ! grep -Fq 'alias pcpyenv=' ~/.zshenv
+if ! grep -Fq 'alias pcpyenv=' ~/.zshrc
 then
-    echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.zshenv
+    echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.zshrc
 else
-    echo 'WARNING @ ~/.zshenv : alias for pcpyenv= alredy exists!'
+    echo 'WARNING @ ~/.zshrc : alias for pcpyenv= alredy exists!'
 fi
-source ~/.zshenv
+if ! grep -Fq 'alias pcpyenv=' ~/.bash_aliases
+then
+    echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
+else
+    echo 'WARNING @ ~/.bash_aliases : alias for pcpyenv= alredy exists!'
+fi
+source ~/.zshrc
+source ~/.bash_aliases
 pcpyenv
 curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
 unzip download.zip
@@ -111,7 +126,7 @@ pcstudio
 https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
-## &#x1F34E; &#x1F34E; &#x1F34E; &#x1F34E; &#x1F34E; Advanced installation
+## &#x1F34E; &#x1F34E; &#x1F34E; &#x1F34E; Advanced installation
 
 ### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
 
