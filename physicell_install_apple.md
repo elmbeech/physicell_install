@@ -20,7 +20,7 @@ brew install gcc imagemagick ffmpeg
 ```
 
 
-## &#x1F34E; &#x1F34E; Basic PhyiCell installation
+## &#x1F34E; Basic PhyiCell installation
 
 ```bash
 mkdir -p ~/src
@@ -72,7 +72,7 @@ make movie
 ```
 
 
-## &#x1F34E; &#x1F34E; &#x1F34E; Essential installation
+## &#x1F34E; Essential installation
 
 We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
 We will name this python3 environment pcpyenv (PhysiCell Python environment).
@@ -127,7 +127,7 @@ pcstudio
 https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
-## &#x1F34E; &#x1F34E; &#x1F34E; &#x1F34E; Advanced installation
+## &#x1F34E; Advanced installation
 
 ### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
 
@@ -152,7 +152,7 @@ exit()
 + https://github.com/PhysiCell-Tools/python-loader
 
 
-## &#x1F34F; &#x1F34F; &#x1F34F; &#x1F34F; IDE VSCode integration (optional)
+## &#x1F34F; IDE VSCode integration (optional)
 
 1. Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .
 

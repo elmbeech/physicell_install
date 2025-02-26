@@ -76,9 +76,9 @@ sudo apt install python3-pip
 ```
 
 
-## &#x1F427; &#x1F427; Basic PhyiCell installation
+## &#x1F427; Basic PhyiCell installation
 
-### &#x2728; Install  PhysiCell:
+### &#x2728; Install PhysiCell:
 
 ```bash
 mkdir -p ~/src
@@ -115,7 +115,7 @@ make movie
 ```
 
 
-## &#x1F427; &#x1F427; &#x1F427; Essential installation
+## &#x1F427; Essential installation
 
 We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
 We will name this python3 environment pcpyenv (PhysiCell Python environment).
@@ -159,7 +159,7 @@ pcstudio
 https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
-## &#x1F427; &#x1F427; &#x1F427; &#x1F427; Advanced installation
+## &#x1F427; Advanced installation
 
 ### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
 
@@ -185,7 +185,7 @@ exit()
 
 
 
-## &#x1F427; &#x1F427; &#x1F427; &#x1F427; IDE VSCode integration (optional)
+## &#x1F427; IDE VSCode integration (optional)
 
 1. Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .
 
