@@ -33,7 +33,7 @@ else
 fi
 if ! grep -Fq 'export PHYSICELL_CPP=' ~/.bashrc
 then
-    echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.bashrc
+    echo export PHYSICELL_CPP=$(bash -c "compgen -c" | grep -m 1 -e '^g++-[0-9]\+') >> ~/.bashrc
 else
     echo 'WARNING @ ~/.bashrc : enviroment variable PHYSICELL_CPP alredy exists!'
 fi
