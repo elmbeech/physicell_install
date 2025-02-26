@@ -86,7 +86,7 @@ if (Test-Path ~\Documents\WindowsPowerShell) {} else {New-Item ~\Documents\Windo
 if (Test-Path ~\Documents\WindowsPowerShell\profile.ps1) {} else {New-Item ~\Documents\WindowsPowerShell\profile.ps1 -Type File}
 $scavenge = Get-Content ~\Documents\WindowsPowerShell\profile.ps1
 if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
-    {Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"} >> ~\.profile.ps1
+    {Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"} >> ~\Documents\WindowsPowerShell\profile.ps1
 }
 ~\.profile.ps1
 pcvenv
