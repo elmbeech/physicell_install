@@ -103,7 +103,7 @@ if (Test-Path ~\src) {
     curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
     Expand-Archive -Path download.zip -DestinationPath .
     Remove-Item download.zip
-    if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio }
+    if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio -Force }
     Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
     pip3.exe install -r PhysiCell-Studio\requirements.txt
     Set-Location ~\src\pcvenv\Scripts
