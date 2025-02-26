@@ -11,7 +11,7 @@ If you prefere another foldername please adjust the commands accordingly.
 
 ### &#x2728; Install GCC, ImageMagick, Unzip, Zip, and ca-certificates:
 
-Open the MSYS2 MINGW64 shell.
+Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
 
 ```bash
 pacman -S mingw-w64-x86_64-gcc make
@@ -25,7 +25,7 @@ pacman -S mingw-w64-x86_64-ca-certificates
 
 ### &#x2728; Install PhysiCell:
 
-Open the MSYS2 MINGW64 shell.
+Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
 
 ```bash
 mkdir -p /c/Users/$USER/src
@@ -40,7 +40,7 @@ mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/maste
 ### &#x2728; Test the PhysiCell installation with the template sample project:
 
 ```bash
-cd ~/src/PhysiCell
+cd /c/Users/$USER/src/PhysiCell
 ```
 ```bash
 make template
