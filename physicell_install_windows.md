@@ -82,6 +82,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```powershell
 Set-Location ~\src
 python.exe -m venv pcvenv
+if (Test-Path ~\Documents\WindowsPowerShell) {} else {New-Item ~\Documents\WindowsPowerShell -Type Directory}
 if (Test-Path ~\Documents\WindowsPowerShell\profile.ps1) {} else {New-Item ~\Documents\WindowsPowerShell\profile.ps1 -Type File}
 $scavenge = Get-Content ~\Documents\WindowsPowerShell\profile.ps1
 if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
