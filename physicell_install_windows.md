@@ -88,7 +88,7 @@ $scavenge = Get-Content ~\Documents\WindowsPowerShell\profile.ps1
 if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
     {Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"} >> ~\Documents\WindowsPowerShell\profile.ps1
 }
-~\.profile.ps1
+Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
 pcvenv
 curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
 Expand-Archive download.zip
