@@ -42,7 +42,7 @@ then
     source ~/.zshrc
 else
     source ~/.bashrc
-if
+fi
 curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
 unzip download.zip
 rm download.zip
@@ -102,11 +102,12 @@ then
 else
     echo 'WARNING @ ~/.bash_aliases : alias for pcpyenv= alredy exists!'
 fi
+if ps -p $$ | grep zsh
 then
     source ~/.zshrc
 else
     source ~/.bash_aliases
-if
+fi
 pcpyenv
 curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
 unzip download.zip
