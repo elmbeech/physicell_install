@@ -75,10 +75,7 @@ make movie
 ## &#x1F34E; Essential installation
 
 We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
-We will name this python3 environment pcvenv (PhysiCell Python environment).
-
-For generate the environment with assume a regular python installation.
-If you run mamba or conda, please adjust the commands accordingly.
+We will name this python3 environment pcvenv (PhysiCell virtual environment).
 
 ### &#x2728; Install PhysiCell-Studio:
 

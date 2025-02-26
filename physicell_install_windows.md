@@ -64,8 +64,9 @@ make movie
 
 ## &#x1FA9F; Essential installation
 
-We will generate a python3 environment with the default python installation.
-
+We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
+We will name this python3 environment pcvenv (PhysiCell virtual environment).   
+                                                                                
 ### &#x2728; Install Python:
 
 If you not already have installed python, please go to the Microsoft Stor and install the latest Python from the Python Software Foundation.
