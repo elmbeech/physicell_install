@@ -14,10 +14,7 @@ If you prefere another foldername please adjust the commands accordingly.
 Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
 
 ```bash
-pacman -S mingw-w64-x86_64-gcc make
-pacman -S mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ffmpeg
-pacman -S unzip zip
-pacman -S mingw-w64-x86_64-ca-certificates
+pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ffmpeg unzip zip mingw-w64-x86_64-ca-certificates
 ```
 
 
