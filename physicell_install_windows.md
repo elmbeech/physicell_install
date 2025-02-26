@@ -82,6 +82,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```powershell
 Set-Location ~\src
 python.exe -m venv pcvenv
+New-Item ~\.profile.ps1 -Type File -Force
 if (Get-Content ~\.profile.ps1 | Select-String -Pattern 'Set-Alias -Name pcvenv -Value') {
     {Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"} >> ~\.profile.ps1
 }
