@@ -11,7 +11,7 @@ If you prefere another foldername please adjust the commands accordingly.
 Follow the instruction to download and install brew.
 Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and execute it.
 
-https://brew.sh/
++ https://brew.sh/
 
 ### &#x2728; Install GCC, ImageMagick, and FFmpeg (required by PhysiCell):
 
@@ -124,7 +124,7 @@ pcstudio
 
 ### &#x2728; Official PhysiCell Studio manual:
 
-https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
++ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
 ## &#x1F34E; Advanced installation

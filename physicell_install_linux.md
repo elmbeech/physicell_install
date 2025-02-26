@@ -156,7 +156,7 @@ pcstudio
 
 ### &#x2728; Official PhysiCell Studio manual:
 
-https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
++ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
 ## &#x1F427; Advanced installation
