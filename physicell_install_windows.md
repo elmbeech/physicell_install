@@ -7,7 +7,7 @@ If you prefere another foldername please adjust the commands accordingly.
 
 ### &#x2728; Download and install MSYS2 x86_64:
 
-https://www.msys2.org/
++ https://www.msys2.org/
 
 ### &#x2728; Install GCC, ImageMagick, Unzip, Zip, and ca-certificates:
 
@@ -18,18 +18,23 @@ pacman -S mingw-w64-x86_64-gcc make
 pacman -S mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ffmpeg
 pacman -S unzip zip
 pacman -S mingw-w64-x86_64-ca-certificates
-pacman -S git
 ```
 
 
-## &#x1FA9F; &#x1FA9F; Basic PhyiCell installation
+## &#x1FA9F; Basic PhyiCell installation
+
+### &#x2728; Install PhysiCell:
 
 Open the MSYS2 MINGW64 shell.
 
 ```bash
 mkdir -p /c/Users/$USER/src
 cd /c/Users/$USER/src
-git clone https://github.com/MathCancer/PhysiCell.git
+curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
+unzip download.zip
+rm download.zip
+rm -fr PhysiCell
+mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
 ```
 
 ### &#x2728; Test the PhysiCell installation with the template sample project:
@@ -57,68 +62,71 @@ make movie
 ```
 
 
-## &#x1FA9F; &#x1FA9F; &#x1FA9F; Essential installation
+## &#x1FA9F; Essential installation
 
 We will generate a python3 environment with the default python installation.
 
 ### &#x2728; Install Python:
 
 If you not already have installed python, please go to the Microsoft Stor and install the latest Python from the Python Software Foundation.
-
+ 
 ### &#x2728; Install PhysiCell-Studio:
 
 Open a PowerShell.
 
 ```powershell
-Set-Location ~
-python.exe -m venv src\pcpyenv
-Set-Alias -Name pcpyenv -Value C:\Users\$USER\src\pcpyenv\Scripts\activate"
-pcpyenv
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+```
+
+```powershell
 Set-Location ~\src
-git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
+python.exe -m venv pcvenv
+{Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"} >> ~\.profile.ps1
+~\.profile.ps1
+pcvenv
+Invoke-RestMethod https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(Invoke-RestMethod https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
+
+unzip.exe download.zip                                                              
+rm download.zip                                                                 
+rm -fr PhysiCell-Studio                                                         
+mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+
 pip3.exe install -r PhysiCell-Studio\requirements.txt
-Set-Location ~\src\pcpyenv\bin
-echo "python3 C:\Users\$USER\src\PhysiCell-Studio\bin\studio.py $*" > pcstudio.exe
-Set-Location ~
+Set-Location ~\src\pcvenv\bin
+{python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*} > pcstudio.exe
+Set-Location ~\src
 ```
 
 ```
-cd ~
-python3 -m venv src/pcpyenv
-echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
-source ~/.bash_aliases
-pcpyenv
-cd ~/src
-git https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
-pip3 install -r PhysiCell-Studio/requirements.txt
-cd ~/src/pcpyenv/bin/
-echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
-chmod 775 pcstudio
-cd ~
+if ! grep -Fq 'alias pcvenv=' ~/.bash_aliases                                  
+then                                                                            
+    echo "alias pcvenv=\"source /home/$USER/src/pcvenv/bin/activate\"" >> ~/.bash_aliases
+fi                                                                              
+source ~/.bash_aliases                                                          
 ```
 
 ### &#x2728; Test the PhysiCell-Studio installation:
 
 ```powershell
 Set-Location ~/src/PhysiCell
-pcpyenv
+pcvenv
 pcstudio
 ```
 
 ### &#x2728; Official PhysiCell Studio manual:
 
-https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
++ https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
 
-## &#x1FA9F; &#x1FA9F; &#x1FA9F; &#x1FA9F; Advanced installation
+## &#x1FA9F; Advanced installation
 
 Open a PowerShell or MSYS2 MINGW64 shell.
 
 ### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
 
 ```bash
-pcpyenv
+pcvenv
 pip3.exe install pcdl ipython
 ```
 ### &#x2728; Test the pcdl installation:
@@ -139,7 +147,7 @@ exit()
 
 
 
-## &#x1FA9F; &#x1FA9F; &#x1FA9F; &#x1FA9F; IDE VSCode integration (optional)
+## &#x1FA9F; IDE VSCode integration (optional)
 
 1. Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .
 
@@ -171,11 +179,11 @@ Extension: Python Install
 Extension: C/C++ Install
 ```
 
-5. Link pcpyenv (the python environment we generated above):
+5. Link pcvenv (the python environment we generated above):
 
 ```
 View | Command Palette… | Python: Select Interpreter |
-Enter interpreter path… | Find… | src/pcpyenv
+Enter interpreter path… | Find… | src/pcvenv
 ```
 
 6. Link msys2 MINGW64 as default shelll:

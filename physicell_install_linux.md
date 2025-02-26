@@ -118,7 +118,7 @@ make movie
 ## &#x1F427; Essential installation
 
 We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
-We will name this python3 environment pcpyenv (PhysiCell Python environment).
+We will name this python3 environment pcvenv (PhysiCell Python environment).
 
 For generate the environment with assume a regular python installation.
 If you run mamba or conda, please adjust the commands accordingly.
@@ -127,20 +127,20 @@ If you run mamba or conda, please adjust the commands accordingly.
 
 ```bash
 cd ~/src
-python3 -m venv pcpyenv
-if ! grep -Fq 'alias pcpyenv=' ~/.bash_aliases
+python3 -m venv pcvenv
+if ! grep -Fq 'alias pcvenv=' ~/.bash_aliases
 then
-    echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
+    echo "alias pcvenv=\"source /home/$USER/src/pcvenv/bin/activate\"" >> ~/.bash_aliases
 fi
 source ~/.bash_aliases
-pcpyenv
+pcvenv
 curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
 unzip download.zip
 rm download.zip
 rm -fr PhysiCell-Studio
 mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
 pip3 install -r PhysiCell-Studio/requirements.txt
-cd ~/src/pcpyenv/bin/
+cd ~/src/pcvenv/bin/
 echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
 chmod 775 pcstudio
 cd ~/src
@@ -150,7 +150,7 @@ cd ~/src
 
 ```bash
 cd ~/src/PhysiCell
-pcpyenv
+pcvenv
 pcstudio
 ```
 
@@ -164,7 +164,7 @@ pcstudio
 ### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
 
 ```bash
-pcpyenv
+pcvenv
 pip3 install pcdl ipython
 ```
 ### &#x2728; Test the pcdl installation:
@@ -217,9 +217,9 @@ Extension: Python Install
 Extension: C/C++ Install
 ```
 
-5. Link pcpyenv (the python environment we generated above):
+5. Link pcvenv (the python environment we generated above):
 
 ```
 View | Command Palette… | Python: Select Interpreter |
-Enter interpreter path… | Find… | src/pcpyenv
+Enter interpreter path… | Find… | src/pcvenv
 ```
