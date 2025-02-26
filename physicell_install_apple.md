@@ -29,15 +29,15 @@ if ! grep -Fq 'export PHYSICELL_CPP=' ~/.zshrc
 then
     echo export PHYSICELL_CPP=$(bash -c "compgen -c" | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshrc
 fi
-if ! grep -Fq 'export PHYSICELL_CPP=' ~/.bashrc
+if ! grep -Fq 'export PHYSICELL_CPP=' ~/.bash_profile
 then
-    echo export PHYSICELL_CPP=$(bash -c "compgen -c" | grep -m 1 -e '^g++-[0-9]\+') >> ~/.bashrc
+    echo export PHYSICELL_CPP=$(bash -c "compgen -c" | grep -m 1 -e '^g++-[0-9]\+') >> ~/.bash_profile
 fi
 if ps -p $$ | grep zsh
 then
     source ~/.zshrc
 else
-    source ~/.bashrc
+    source ~/.bash_profile
 fi
 pcpyenv
 curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
@@ -91,15 +91,15 @@ if ! grep -Fq 'alias pcpyenv=' ~/.zshrc
 then
     echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.zshrc
 fi
-if ! grep -Fq 'alias pcpyenv=' ~/.bash_aliases
+if ! grep -Fq 'alias pcpyenv=' ~/.bash_profile
 then
-    echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
+    echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_profile
 fi
 if ps -p $$ | grep zsh
 then
     source ~/.zshrc
 else
-    source ~/.bash_aliases
+    source ~/.bash_profile
 fi
 pcpyenv
 curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
