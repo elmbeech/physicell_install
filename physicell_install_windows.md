@@ -110,7 +110,7 @@ if (Test-Path ~\src) {
     "python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*" > pcstudio.exe
     Set-Location ~\src
 } else {
-    "Error : cannot find ~\src folder. Did you run the 'Basic PhysiCell installation'?"
+    'Error : cannot find ~\src folder. Did you run the "Basic PhysiCell installation"?'
 }
 ```
 
