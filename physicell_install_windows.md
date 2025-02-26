@@ -68,13 +68,20 @@ We will name this python3 environment pcvenv (PhysiCell virtual environment).
 
 If you not already have installed python, please go to the Microsoft Stor and install the latest Python from the Python Software Foundation.
 
-### &#x2728; Install PhysiCell-Studio:
 
-Open a PowerShell.
+### &#x2728; Get the Windows PowerShell ready:
+
+Open a Windows PowerShell ~ the regular one, not the ISE and not the x86 one!
+
+To activate Python environments, we have to be able to run PowerShell scripts.
+This is why we have to change the execution policy. 
+Please run the command below and confirm with Y.
 
 ```powershell
 Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
+
+### &#x2728; Install PhysiCell-Studio:
 
 ```powershell
 if (Test-Path ~\src) {
@@ -103,7 +110,7 @@ if (Test-Path ~\src) {
     "python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*" > pcstudio.exe
     Set-Location ~\src
 } else {
-    "Error : can not find ~\src folder. Did you run the 'Basic PhysiCell installation'?"
+    "Error : cannot find ~\src folder. Did you run the 'Basic PhysiCell installation'?"
 }
 ```
 
