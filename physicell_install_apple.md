@@ -1,7 +1,7 @@
 # Setup PhysiCell on macOS
 
-We will install everithing PhysiCell realted under the src folder that we will place in your home directory.
-If you prefere another foldername please adjust the commands accordingly.
+We will install everything PhysiCell related under the src folder that we will place in your home directory.
+If you prefer another folder name, please adjust the commands accordingly.
 
 
 ## &#x1F34E; Operating system dependencies.
@@ -19,7 +19,6 @@ Don't forget to put brew under your $PATH.
 echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.bash_profile
 source ~/.bash_profile
 ```
-
 
 ### &#x2728; Install GCC, ImageMagick, and FFmpeg (required by PhysiCell):
 

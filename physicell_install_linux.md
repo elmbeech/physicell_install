@@ -3,8 +3,8 @@
 This document describes the PhysiCell installation on a Debian Linux distribution.
 If you run on another flavor, please adjust accordingly.
 
-We will install everithing PhysiCell realted under the ~/src folder.
-If you prefere another foldername please adjust the commands accordingly.
+We will install everything PhysiCell related under the ~/src folder.
+If you prefer another folder name, please adjust the commands accordingly.
 
 
 ## &#x1F427; Operating system library dependencies
@@ -27,7 +27,7 @@ sudo apt install build-essential
 ImageMagick is used for making jpeg and gif images from PhysiCell svg image output.
 
 The PhysiCell `Makefile` is written for **ImageMagick >=  version 7**, which requires a magick command in front of each ImageMagick command (e.g. magick convert instead of convert).
-Many Linux distrubution ship with **ImageMagick version 6**.
+Many Linux distributions ship with **ImageMagick version 6**.
 This is why we might have to tewak a bit the installation.
 
 ```bash
@@ -69,7 +69,7 @@ sudo apt install qtbase5-dev
 
 ### &#x2728; Install Python:
 
-Python is most probbaly already installed, but pip might be missing (required by PhysiCell-Studio and pcdl).
+Python is most probably already installed, but pip might be missing (required by PhysiCell-Studio and pcdl).
 
 ```bash
 sudo apt install python3-pip

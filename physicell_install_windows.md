@@ -1,7 +1,7 @@
 # Setup PhysiCell on Windows
 
-We will install everithing PhysiCell realted under the src folder that we will place in your Windows Home directory.
-If you prefere another foldername please adjust the commands accordingly.
+We will install everything PhysiCell related under the src folder that we will place in your Windows Home directory.
+If you prefer another folder name, please adjust the commands accordingly.
 
 ## &#x1FA9F; Operating system dependencies
 
@@ -66,7 +66,7 @@ We will name this python3 environment pcvenv (PhysiCell virtual environment).
 
 ### &#x2728; Install Python:
 
-If you not already have installed python, please go to the Microsoft Stor and install the latest Python from the Python Software Foundation.
+If you not already have installed python, please go to the Microsoft Store and install the latest Python from the Python Software Foundation.
 
 
 ### &#x2728; Get the Windows PowerShell ready:
