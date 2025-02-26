@@ -25,8 +25,17 @@ brew install gcc imagemagick ffmpeg
 ```bash
 mkdir -p ~/src
 cd ~/src
-echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshenv
-git clone https://github.com/MathCancer/PhysiCell.git
+if ! grep -Fq 'export PHYSICELL_CPP=' ~/.zshenv
+then
+    echo export PHYSICELL_CPP=$(compgen -c | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshenv
+else
+    echo 'WARNING @ ~/.zshenv : enviroment variable PHYSICELL_CPP alredy exists!'
+fi
+curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
+unzip download.zip
+rm download.zip
+rm -fr PhysiCell
+mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
 ```
 
 ### &#x2728; Test the PhyiCell installation with the template sample project:
@@ -67,19 +76,26 @@ If you run mamba or conda, please adjust the commands accordingly.
 Open a Terminal (found at Applications / Utilities).
 
 ```bash
-cd ~
-mkdir -p ~/src
-python3 -m venv src/pcpyenv
-echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.zshenv
+cd ~/src
+python3 -m venv pcpyenv
+if ! grep -Fq 'alias pcpyenv=' ~/.zshenv
+then
+    echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.zshenv
+else
+    echo 'WARNING @ ~/.zshenv : alias for pcpyenv= alredy exists!'
+fi
 source ~/.zshenv
 pcpyenv
-cd ~/src
-git clone https://github.com/PhysiCell-Tools/PhysiCell-Studio.git
+curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
+unzip download.zip
+rm download.zip
+rm -fr PhysiCell-Studio
+mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
 pip3 install -r PhysiCell-Studio/requirements.txt
-cd ~/src/pcpyenv/bin
+cd ~/src/pcpyenv/bin/
 echo "python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
 chmod 775 pcstudio
-cd ~
+cd ~/src
 ```
 
 ### &#x2728; Test the PhysiCell-Studio installation:
