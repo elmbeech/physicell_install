@@ -96,7 +96,7 @@ Remove-Item download.zip
 if (Test-Path PhysiCell-Studio) {Remove-Item PhysiCell-Studio}
 Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
 pip3.exe install -r PhysiCell-Studio\requirements.txt
-Set-Location ~\src\pcvenv\bin
+Set-Location ~\src\pcvenv\Scripts
 {python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*} > pcstudio.exe
 Set-Location ~\src
 ```
