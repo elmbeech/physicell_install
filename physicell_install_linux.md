@@ -131,8 +131,6 @@ python3 -m venv pcpyenv
 if ! grep -Fq 'alias pcpyenv=' ~/.bash_aliases
 then
     echo "alias pcpyenv=\"source /home/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
-else
-    echo 'WARNING @ ~/.bash_aliases : alias for pcpyenv alredy exists!'
 fi
 source ~/.bash_aliases
 pcpyenv

@@ -28,14 +28,10 @@ cd ~/src
 if ! grep -Fq 'export PHYSICELL_CPP=' ~/.zshrc
 then
     echo export PHYSICELL_CPP=$(bash -c "compgen -c" | grep -m 1 -e '^g++-[0-9]\+') >> ~/.zshrc
-else
-    echo 'WARNING @ ~/.zshrc : enviroment variable PHYSICELL_CPP alredy exists!'
 fi
 if ! grep -Fq 'export PHYSICELL_CPP=' ~/.bashrc
 then
     echo export PHYSICELL_CPP=$(bash -c "compgen -c" | grep -m 1 -e '^g++-[0-9]\+') >> ~/.bashrc
-else
-    echo 'WARNING @ ~/.bashrc : enviroment variable PHYSICELL_CPP alredy exists!'
 fi
 if ps -p $$ | grep zsh
 then
@@ -94,14 +90,10 @@ python3 -m venv pcpyenv
 if ! grep -Fq 'alias pcpyenv=' ~/.zshrc
 then
     echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.zshrc
-else
-    echo 'WARNING @ ~/.zshrc : alias for pcpyenv= alredy exists!'
 fi
 if ! grep -Fq 'alias pcpyenv=' ~/.bash_aliases
 then
     echo "alias pcpyenv=\"source /Users/$USER/src/pcpyenv/bin/activate\"" >> ~/.bash_aliases
-else
-    echo 'WARNING @ ~/.bash_aliases : alias for pcpyenv= alredy exists!'
 fi
 if ps -p $$ | grep zsh
 then
