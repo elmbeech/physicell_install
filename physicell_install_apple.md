@@ -43,6 +43,7 @@ then
 else
     source ~/.bashrc
 fi
+pcpyenv
 curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
 unzip download.zip
 rm download.zip
