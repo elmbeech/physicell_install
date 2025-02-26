@@ -80,30 +80,34 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
 ```powershell
-Set-Location ~\src
-python.exe -m venv pcvenv
-if (Test-Path ~\Documents\WindowsPowerShell) {} else { New-Item ~\Documents\WindowsPowerShell -Type Directory }
-if (Test-Path ~\Documents\WindowsPowerShell\profile.ps1) {} else { New-Item ~\Documents\WindowsPowerShell\profile.ps1 -Type File }
-$scavenge = Get-Content ~\Documents\WindowsPowerShell\profile.ps1
-if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
-    "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1""" >> ~\Documents\WindowsPowerShell\profile.ps1
+if (Test-Path ~\src) {
+    Set-Location ~\src
+    python.exe -m venv pcvenv
+    if (Test-Path ~\Documents\WindowsPowerShell) {} else { New-Item ~\Documents\WindowsPowerShell -Type Directory }
+    if (Test-Path ~\Documents\WindowsPowerShell\profile.ps1) {} else { New-Item ~\Documents\WindowsPowerShell\profile.ps1 -Type File }
+    $scavenge = Get-Content ~\Documents\WindowsPowerShell\profile.ps1
+    if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
+        "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1""" >> ~\Documents\WindowsPowerShell\profile.ps1
+    }
+    if (Test-Path ~\.bash_profile) {} else { New-Item ~\.bash_profile }
+    $scavenge = Get-Content ~\.bash_profile
+    if ($scavenge -match 'alias pcpyenv=') {} else {
+        "alias pcpyenv=""source /c/Users/$ENV:UserName/src/pcpyenv/Scripts/activate""" >> ~\.bash_profile
+    }
+    Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
+    pcvenv
+    curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
+    Expand-Archive -Path download.zip -DestinationPath .
+    Remove-Item download.zip
+    if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio }
+    Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+    pip3.exe install -r PhysiCell-Studio\requirements.txt
+    Set-Location ~\src\pcvenv\Scripts
+    "python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*" > pcstudio.exe
+    Set-Location ~\src
+} else {
+    "Error : can not find ~\src folder. Did you run the 'Basic PhysiCell installation'?"
 }
-if (Test-Path ~\.bash_profile) {} else { New-Item ~\.bash_profile }
-$scavenge = Get-Content ~\.bash_profile
-if ($scavenge -match 'alias pcpyenv=') {} else {
-    "alias pcpyenv=""source /c/Users/$ENV:UserName/src/pcpyenv/Scripts/activate""" >> ~\.bash_profile
-}
-Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
-pcvenv
-curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
-Expand-Archive -Path download.zip -DestinationPath .
-Remove-Item download.zip
-if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio }
-Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
-pip3.exe install -r PhysiCell-Studio\requirements.txt
-Set-Location ~\src\pcvenv\Scripts
-"python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*" > pcstudio.exe
-Set-Location ~\src
 ```
 
 ### &#x2728; Test the PhysiCell-Studio installation:

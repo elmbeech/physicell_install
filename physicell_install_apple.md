@@ -13,6 +13,14 @@ Basically, copy the installation command, paste it into the Terminal (found at A
 
 + https://brew.sh/
 
+Don't forget to put brew under your $PATH.
+
+```bash
+echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.bash_profile
+source ~/.bash_profile
+```
+
+
 ### &#x2728; Install GCC, ImageMagick, and FFmpeg (required by PhysiCell):
 
 ```bash
@@ -160,7 +168,7 @@ File | New Window with Profile
 Name: physicell
 Icon: choose something cool.
 Create
-Add Folder: Home/src
+Add Folder: Users/<username>/src
 click the profile icon (default is a gearwheel) on the left side bottom corner.
 Profile > physicell
 ```
