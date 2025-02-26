@@ -37,8 +37,12 @@ then
 else
     echo 'WARNING @ ~/.bashrc : enviroment variable PHYSICELL_CPP alredy exists!'
 fi
-source ~/.zshrc
-source ~/.bashrc
+if ps -p $$ | grep zsh
+then
+    source ~/.zshrc
+else
+    source ~/.bashrc
+if
 curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
 unzip download.zip
 rm download.zip
@@ -98,8 +102,11 @@ then
 else
     echo 'WARNING @ ~/.bash_aliases : alias for pcpyenv= alredy exists!'
 fi
-source ~/.zshrc
-source ~/.bash_aliases
+then
+    source ~/.zshrc
+else
+    source ~/.bash_aliases
+if
 pcpyenv
 curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
 unzip download.zip
