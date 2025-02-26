@@ -65,12 +65,12 @@ make movie
 ## &#x1FA9F; Essential installation
 
 We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
-We will name this python3 environment pcvenv (PhysiCell virtual environment).   
-                                                                                
+We will name this python3 environment pcvenv (PhysiCell virtual environment).
+
 ### &#x2728; Install Python:
 
 If you not already have installed python, please go to the Microsoft Stor and install the latest Python from the Python Software Foundation.
- 
+
 ### &#x2728; Install PhysiCell-Studio:
 
 Open a PowerShell.
@@ -82,28 +82,21 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```powershell
 Set-Location ~\src
 python.exe -m venv pcvenv
-{Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"} >> ~\.profile.ps1
+if (Get-Content ~\.profile.ps1 | Select-String -Pattern 'Set-Alias -Name pcvenv -Value') {
+    {Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"} >> ~\.profile.ps1
+}
 ~\.profile.ps1
 pcvenv
-Invoke-RestMethod https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(Invoke-RestMethod https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
-
-unzip.exe download.zip                                                              
-rm download.zip                                                                 
-rm -fr PhysiCell-Studio                                                         
-mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
+Expand-Archive download.zip
+Remove-Item download.zip
+Remove-Item -fr PhysiCell-Studio
+Move-Item PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
 
 pip3.exe install -r PhysiCell-Studio\requirements.txt
 Set-Location ~\src\pcvenv\bin
 {python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*} > pcstudio.exe
 Set-Location ~\src
-```
-
-```
-if ! grep -Fq 'alias pcvenv=' ~/.bash_aliases                                  
-then                                                                            
-    echo "alias pcvenv=\"source /home/$USER/src/pcvenv/bin/activate\"" >> ~/.bash_aliases
-fi                                                                              
-source ~/.bash_aliases                                                          
 ```
 
 ### &#x2728; Test the PhysiCell-Studio installation:
