@@ -91,11 +91,10 @@ if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
 Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
 pcvenv
 curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
-Expand-Archive download.zip
+Expand-Archive -Path download.zip -DestinationPath .
 Remove-Item download.zip
-Remove-Item -fr PhysiCell-Studio
+if (Test-Path PhysiCell-Studio) {Remove-Item PhysiCell-Studio}
 Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
-
 pip3.exe install -r PhysiCell-Studio\requirements.txt
 Set-Location ~\src\pcvenv\bin
 {python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*} > pcstudio.exe
