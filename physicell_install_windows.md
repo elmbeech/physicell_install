@@ -99,7 +99,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 $install = 'Y'
 $uart = 'Y'
 if (Test-Path ~\src\PhysiCell-Studio) {
-    $name = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+    $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
 }
 if ($install -eq $uart) {
     if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
