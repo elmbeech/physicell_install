@@ -74,7 +74,7 @@ If you not already have installed python, please go to the Microsoft Store and i
 Open a Windows PowerShell ~ the regular one, not the ISE and not the x86 one!
 
 To activate Python environments, we have to be able to run PowerShell scripts.
-This is why we have to change the execution policy. 
+This is why we have to change the execution policy.
 Please run the command below and confirm with Y.
 
 ```powershell
@@ -107,7 +107,8 @@ if (Test-Path ~\src) {
     Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
     pip3.exe install -r PhysiCell-Studio\requirements.txt
     Set-Location ~\src\pcvenv\Scripts
-    "python3 C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $*" > pcstudio.exe
+    "python.exe C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $args" > pcstudio.ps1
+    "python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*" > pcstudio.exe
     Set-Location ~\src
 } else {
     'Error : cannot find ~\src folder. Did you run the "Basic PhysiCell installation"?'
