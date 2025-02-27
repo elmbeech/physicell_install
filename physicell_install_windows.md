@@ -31,6 +31,7 @@ if [ -d /c/Users/$USER/src/PhysiCell ]
 then
     echo "WARNING : /c/Users/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]"
     read uart
+fi
 if [ $install == $uart ]
 then
     mkdir -p /c/Users/$USER/src
