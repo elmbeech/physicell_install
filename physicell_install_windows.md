@@ -96,10 +96,10 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ### &#x2728; Install PhysiCell-Studio:
 
 ```powershell
-install = 'Y'
-uart = 'Y'
+$install = 'Y'
+$uart = 'Y'
 if (Test-Path ~\src\PhysiCell-Studio) {
-    $name = "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+    $name = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
 }
 if ($install == $uart) {
     if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
