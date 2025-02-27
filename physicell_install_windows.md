@@ -25,13 +25,24 @@ pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_6
 Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
 
 ```bash
-mkdir -p /c/Users/$USER/src
-cd /c/Users/$USER/src
-curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
-unzip download.zip
-rm download.zip
-rm -fr PhysiCell
-mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
+install='Y'
+uart='Y'
+if [ -d /c/Users/$USER/src/PhysiCell ]
+then
+    echo "WARNING : /c/Users/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]"
+    read uart
+if [ $install == $uart ]
+then
+    mkdir -p /c/Users/$USER/src
+    cd /c/Users/$USER/src
+    curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
+    unzip download.zip
+    rm download.zip
+    rm -fr PhysiCell
+    mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
+else
+    echo 'installation terminated.'
+fi
 ```
 
 ### &#x2728; Test the PhysiCell installation with the template sample project:
@@ -84,7 +95,13 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ### &#x2728; Install PhysiCell-Studio:
 
 ```powershell
-if (Test-Path ~\src) {
+install = true
+uart = true
+if (Test-Path ~\src\PhysiCell-Studio) {
+    "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+}
+if ($install == $uart) {
+    if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
     Set-Location ~\src
     python.exe -m venv pcvenv
     if (Test-Path ~\Documents\WindowsPowerShell) {} else { New-Item ~\Documents\WindowsPowerShell -Type Directory }
@@ -111,7 +128,7 @@ if (Test-Path ~\src) {
     "python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*" > pcstudio.exe
     Set-Location ~\src
 } else {
-    'Error : cannot find ~\src folder. Did you run the "Basic PhysiCell installation"?'
+    'installation terminated.'
 }
 ```
 

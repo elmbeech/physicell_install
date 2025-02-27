@@ -81,13 +81,25 @@ sudo apt install python3-pip
 ### &#x2728; Install PhysiCell:
 
 ```bash
-mkdir -p ~/src
-cd ~/src
-curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
-unzip download.zip
-rm download.zip
-rm -fr PhysiCell
-mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
+install='Y'
+uart='Y'
+if [ -d ~/src/PhysiCell ]
+then
+    echo "WARNING : /home/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]"
+    read uart
+fi
+if [ $install == $uart ]
+then
+    mkdir -p ~/src
+    cd ~/src
+    curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
+    unzip download.zip
+    rm download.zip
+    rm -fr PhysiCell
+    mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
+else
+    echo 'installation terminated.'
+fi
 ```
 
 ### &#x2728; Test the PhyiCell installation with the template sample project:
@@ -123,24 +135,36 @@ We will name this python3 environment pcvenv (PhysiCell virtual environment).
 ### &#x2728; Install PhysiCell-Studio:
 
 ```bash
-cd ~/src
-python3 -m venv pcvenv
-if ! grep -Fq 'alias pcvenv=' ~/.bash_aliases
+install='Y'
+uart='Y'
+if [ -d ~/src/PhysiCell-Studio ]
 then
-    echo "alias pcvenv=\"source /home/$USER/src/pcvenv/bin/activate\"" >> ~/.bash_aliases
+    echo "WARNING : /home/$USER/src/PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+    read uart
 fi
-source ~/.bash_aliases
-pcvenv
-curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
-unzip download.zip
-rm download.zip
-rm -fr PhysiCell-Studio
-mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
-pip3 install -r PhysiCell-Studio/requirements.txt
-cd ~/src/pcvenv/bin/
-echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
-chmod 775 pcstudio
-cd ~/src
+if [ $install == $uart ]
+then
+    cd ~/src
+    python3 -m venv pcvenv
+    if ! grep -Fq 'alias pcvenv=' ~/.bash_aliases
+    then
+        echo "alias pcvenv=\"source /home/$USER/src/pcvenv/bin/activate\"" >> ~/.bash_aliases
+    fi
+    source ~/.bash_aliases
+    pcvenv
+    curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
+    unzip download.zip
+    rm download.zip
+    rm -fr PhysiCell-Studio
+    mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+    pip3 install -r PhysiCell-Studio/requirements.txt
+    cd ~/src/pcvenv/bin/
+    echo "python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
+    chmod 775 pcstudio
+    cd ~/src
+else
+    echo 'installation terminated.'
+fi
 ```
 
 ### &#x2728; Test the PhysiCell-Studio installation:
