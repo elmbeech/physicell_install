@@ -29,6 +29,8 @@ brew install gcc imagemagick ffmpeg
 
 ## &#x1F34E; Basic PhyiCell installation
 
+### &#x2728; Install PhysiCell:
+
 ```bash
 install='Y'
 uart='Y'
@@ -54,7 +56,6 @@ then
     else
         source ~/.bash_profile
     fi
-    pcvenv
     curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip > download.zip
     unzip download.zip
     rm download.zip
