@@ -101,7 +101,7 @@ $uart = 'Y'
 if (Test-Path ~\src\PhysiCell-Studio) {
     $name = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
 }
-if ($install == $uart) {
+if ($install -eq $uart) {
     if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
     Set-Location ~\src
     python.exe -m venv pcvenv
