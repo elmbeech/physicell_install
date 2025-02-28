@@ -24,6 +24,7 @@ pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_6
 ### &#x2728; Install PhysiCell:
 
 Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
+Copy past the code below into the shell and press the enter key.
 
 ```bash
 install='Y'
@@ -96,6 +97,8 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 ### &#x2728; Install PhysiCell-Studio:
 
+Copy past the code below into the shell and press the enter key.
+
 ```powershell
 $install = 'Y'
 $uart = 'Y'
@@ -134,12 +137,24 @@ if ($install -eq $uart) {
 }
 ```
 
-### &#x2728; Test the PhysiCell-Studio installation:
+### &#x2728; Run PhysiCell-Studio in PowerShell:
+
+Open a Windows PowerShell ~ the regular one, not the ISE and not the x86 one!
 
 ```powershell
-Set-Location ~/src/PhysiCell
+Set-Location ~\src\PhysiCell
 pcvenv
-pcstudio
+pcstudio.ps1
+```
+
+### &#x2728; Run PhysiCell-Studio in the MYSYS2 shell:
+
+Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
+
+```bash
+cd  /c/Users/$USER/src/PhysiCell
+pcvenv
+pcstudio.exe
 ```
 
 ### &#x2728; Official PhysiCell Studio manual:
@@ -149,13 +164,13 @@ pcstudio
 
 ## &#x1FA9F; Advanced installation
 
-Open a PowerShell or MSYS2 MINGW64 shell.
-
 ### &#x2728; Install Python:
 
 If you not already have installed python, please go to the Microsoft Store and install the latest Python from the Python Software Foundation.
 
 ### &#x2728; Install PhysiCell Data Loader (pcdl) and iPython:
+
+Open a PowerShell or MSYS2 MINGW64 shell.
 
 ```bash
 pcvenv

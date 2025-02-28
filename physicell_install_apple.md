@@ -9,7 +9,7 @@ If you prefer another folder name, please adjust the commands accordingly.
 ### &#x2728; Install Brew:
 
 Follow the instruction to download and install brew.
-Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and execute it.
+Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.
 
 + https://brew.sh/
 
@@ -30,6 +30,8 @@ brew install gcc imagemagick ffmpeg
 ## &#x1F34E; Basic PhyiCell installation
 
 ### &#x2728; Install PhysiCell:
+
+Copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.
 
 ```bash
 install='Y'
@@ -98,7 +100,7 @@ We will name this python3 environment pcvenv (PhysiCell virtual environment).
 
 ### &#x2728; Install PhysiCell-Studio:
 
-Open a Terminal (found at Applications / Utilities).
+Copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.
 
 ```bash
 install='Y'
