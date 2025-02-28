@@ -67,7 +67,7 @@ sudo apt install ffmpeg tar gzip unzip
 sudo apt install qtbase5-dev
 ```
 
-### &#x2728; Install Python:
+### &#x2728; Install Python (required by PhysiCell-Studio and PhysiCell Data Loader):
 
 Python is most probably already installed, but pip might be missing (required by PhysiCell-Studio and pcdl).
 
@@ -182,7 +182,7 @@ pcstudio
 
 ## &#x1F427; Advanced installation
 
-### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
+### &#x2728; Install PhysiCell Data Loader (pcdl) and iPython:
 
 ```bash
 pcvenv
@@ -203,7 +203,6 @@ exit()
 ### &#x2728; Official pcdl manual:
 
 + https://github.com/PhysiCell-Tools/python-loader
-
 
 
 ## &#x1F427; IDE VSCode integration (optional)

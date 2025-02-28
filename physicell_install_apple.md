@@ -156,7 +156,7 @@ pcstudio
 
 ## &#x1F34E; Advanced installation
 
-### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
+### &#x2728; Install PhysiCell Data Loader (pcdl) and iPython:
 
 ```bash
 pcvenv

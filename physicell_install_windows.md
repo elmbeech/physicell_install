@@ -3,6 +3,7 @@
 We will install everything PhysiCell related under the src folder that we will place in your Windows Home directory.
 If you prefer another folder name, please adjust the commands accordingly.
 
+
 ## &#x1FA9F; Operating system dependencies
 
 ### &#x2728; Download and install MSYS2 x86_64:
@@ -146,12 +147,15 @@ pcstudio
 + https://github.com/PhysiCell-Tools/Studio-Guide/tree/main
 
 
-
 ## &#x1FA9F; Advanced installation
 
 Open a PowerShell or MSYS2 MINGW64 shell.
 
-### &#x2728; Install PhysiCell data loader (pcdl) and iPython:
+### &#x2728; Install Python:
+
+If you not already have installed python, please go to the Microsoft Store and install the latest Python from the Python Software Foundation.
+
+### &#x2728; Install PhysiCell Data Loader (pcdl) and iPython:
 
 ```bash
 pcvenv
@@ -172,7 +176,6 @@ exit()
 ### &#x2728; Official pcdl manual:
 
 + https://github.com/PhysiCell-Tools/python-loader
-
 
 
 ## &#x1FA9F; IDE VSCode integration (optional)
