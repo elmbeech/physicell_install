@@ -42,12 +42,12 @@ Copy the installation command, paste it into the Terminal (found at Applications
 ```bash
 install='Y'
 uart='Y'
-if [ -d ~/src/PhysiCell ]
+if [[ -d ~/src/PhysiCell ]]
 then
     echo "WARNING : /Users/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]"
     read uart
 fi
-if [ $install == $uart ]
+if [[ $install == $uart ]]
 then
     mkdir -p ~/src
     cd ~/src
@@ -112,12 +112,12 @@ Copy the installation command, paste it into the Terminal (found at Applications
 ```bash
 install='Y'
 uart='Y'
-if [ -d ~/src/PhysiCell-Studio ]
+if [[ -d ~/src/PhysiCell-Studio ]]
 then
     echo "WARNING : /Users/$USER/src/PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
     read uart
 fi
-if [ $install == $uart ]
+if [[ $install == $uart ]]
 then
     cd ~/src
     python3 -m venv pcvenv
