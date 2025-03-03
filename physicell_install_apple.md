@@ -16,8 +16,14 @@ Basically, copy the installation command, paste it into the Terminal (found at A
 Don't forget to put brew under your $PATH.
 
 ```bash
+echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.zshrc
 echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.bash_profile
-source ~/.bash_profile
+if ps -p $$ | grep zsh
+then
+    source ~/.zshrc
+else
+    source ~/.bash_profile
+fi
 ```
 
 ### &#x2728; Install GCC, ImageMagick, and FFmpeg (required by PhysiCell):
