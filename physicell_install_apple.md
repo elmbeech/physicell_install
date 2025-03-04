@@ -17,9 +17,11 @@ Don't forget to put brew under your $PATH.
 
 ```bash
 if ! grep -Fq '/opt/homebrew/bin=' ~/.zshrc
+then
     echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.zshrc
 fi
 if ! grep -Fq '/opt/homebrew/bin=' ~/.bash_profile
+then
     echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.bash_profile
 fi
 if ps -p $$ | grep zsh
