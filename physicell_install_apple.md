@@ -48,9 +48,7 @@ Copy the installation command, paste it into the Terminal (found at Applications
 ```bash
 if [ -d ~/src/PhysiCell ]
 then
-    echo ''
-    echo "ERROR : /Users/$USER/src/PhysiCell already exists!"
-    echo 'please delete the folder if you want to do a reinstallation. installation terminated.'
+    echo "ERROR : /Users/$USER/src/PhysiCell already exists!\nplease delete the folder if you want to do a reinstallation. installation terminated."
 else
     mkdir -p ~/src
     cd ~/src
@@ -113,9 +111,7 @@ Copy the installation command, paste it into the Terminal (found at Applications
 ```bash
 if [ -d ~/src/PhysiCell-Studio ]
 then
-    echo ''
-    echo "ERROR : /Users/$USER/src/PhysiCell-Studio already exists!"
-    echo 'please delete the folder if you want to do a reinstallation. installation terminated.'
+    echo "ERROR : /Users/$USER/src/PhysiCell-Studio already exists!\nplease delete the folder if you want to do a reinstallation. installation terminated."
 else
     cd ~/src
     python3 -m venv pcvenv
