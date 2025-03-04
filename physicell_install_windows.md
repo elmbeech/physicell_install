@@ -118,7 +118,7 @@ if ($install -eq $uart) {
     if (Test-Path C:\msys64\home\epb\.bash_profile) {} else { New-Item ~\.bash_profile }
     $scavenge = Get-Content C:\msys64\home\epb\.bash_profile
     if ($scavenge -match 'alias pcvenv=') {} else {
-        "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate""" >> ~\.bash_profile
+        "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate""" >> "C:\msys64\$ENV:UserName\.bash_profile"
     }
     Set-Alias -Name pcvenv -Value "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
     pcvenv
