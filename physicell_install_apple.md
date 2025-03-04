@@ -129,13 +129,7 @@ then
     then
         echo "alias pcvenv=\"source /Users/$USER/src/pcvenv/bin/activate\"" >> ~/.bash_profile
     fi
-    if ps -p $$ | grep zsh
-    then
-        source ~/.zshrc
-    else
-        source ~/.bash_profile
-    fi
-    pcvenv
+    source /Users/$USER/src/pcvenv/bin/activate
     curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
     unzip download.zip
     rm download.zip
