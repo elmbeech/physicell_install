@@ -24,7 +24,7 @@ pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_6
 ### &#x2728; Install PhysiCell:
 
 Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
-Copy past the code below into the shell and press the enter key.
+Copy paste (mouse right click) the code below into the shell and press the enter key.
 
 ```bash
 install='Y'
@@ -87,7 +87,11 @@ If you not already have installed python, please go to the Microsoft Store and i
 
 ### &#x2728; Get the Windows PowerShell ready:
 
-Open a Windows PowerShell ~ the regular one, not the ISE and not the x86 one!
+Open a PowerShell (v7.x) or WindowsPowerShell ~ the regular one, not the ISE and not the x86 one (v5.1)!
+
+If you wonder, why there is more than one PowerShell flavor, read this article. Our script will run in both flavors.
++ https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell
+
 
 To activate Python environments, we have to be able to run PowerShell scripts.
 This is why we have to change the execution policy.
@@ -99,7 +103,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 ### &#x2728; Install PhysiCell-Studio:
 
-Copy past the code below into the shell and press the enter key.
+Copy past (ctrl + v) the code below into the shell and press the enter key.
 
 ```powershell
 $install = 'Y'
@@ -142,7 +146,7 @@ if ($install -eq $uart) {
 
 ### &#x2728; Run PhysiCell-Studio in PowerShell:
 
-Open a Windows PowerShell ~ the regular one, not the ISE and not the x86 one!
+Open a PowerShell (v7.x) or WindowsPowerShell ~ the regular one, not the ISE and not the x86 one (v5.1)!
 
 ```powershell
 Set-Location ~\src\PhysiCell
