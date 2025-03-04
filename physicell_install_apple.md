@@ -46,16 +46,11 @@ brew install gcc imagemagick ffmpeg
 Copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.
 
 ```bash
-install='Y'
-uart='Y'
 if [ -d ~/src/PhysiCell ]
 then
-    echo "WARNING : /Users/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]"
-    read uart
-fi
-
-if [ $install == $uart ]
-then
+    echo "WARNING : /Users/$USER/src/PhysiCell already exists! please delete the folder if you want to do a reinstallation.
+    echo 'installation terminated.'
+else
     mkdir -p ~/src
     cd ~/src
     if ! grep -Fq 'export PHYSICELL_CPP=' ~/.zshrc
@@ -77,8 +72,6 @@ then
     rm download.zip
     rm -fr PhysiCell
     mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
-else
-    echo 'installation terminated.'
 fi
 ```
 
@@ -117,15 +110,11 @@ We will name this python3 environment pcvenv (PhysiCell virtual environment).
 Copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.
 
 ```bash
-install='Y'
-uart='Y'
-if [[ -d ~/src/PhysiCell-Studio ]]
+if [ -d ~/src/PhysiCell-Studio ]
 then
-    echo "WARNING : /Users/$USER/src/PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
-    read uart
-fi
-if [[ $install == $uart ]]
-then
+    echo "WARNING : /Users/$USER/src/PhysiCell-Studio already exists! please delete the folder if you want to do a reinstallation.
+    echo 'installation terminated.'
+else
     cd ~/src
     python3 -m venv pcvenv
     if ! grep -Fq 'alias pcvenv=' ~/.zshrc
@@ -147,8 +136,6 @@ then
     echo "python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py \$*" > pcstudio
     chmod 775 pcstudio
     cd ~/src
-else
-    echo 'installation terminated.'
 fi
 ```
 
