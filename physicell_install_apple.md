@@ -16,8 +16,12 @@ Basically, copy the installation command, paste it into the Terminal (found at A
 Don't forget to put brew under your $PATH.
 
 ```bash
-echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.zshrc
-echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.bash_profile
+if ! grep -Fq '/opt/homebrew/bin=' ~/.zshrc
+    echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.zshrc
+fi
+if ! grep -Fq '/opt/homebrew/bin=' ~/.bash_profile
+    echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.bash_profile
+fi
 if ps -p $$ | grep zsh
 then
     source ~/.zshrc
