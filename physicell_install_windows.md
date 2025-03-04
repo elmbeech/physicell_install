@@ -124,7 +124,7 @@ if ($install -eq $uart) {
     if ($scavenge -match 'alias pcvenv=') {} else {
         Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate"""
     }
-    C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1
+    "C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
     curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
     Expand-Archive -Path download.zip -DestinationPath .
     Remove-Item download.zip
