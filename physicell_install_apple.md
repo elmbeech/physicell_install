@@ -48,7 +48,7 @@ Copy the installation command, paste it into the Terminal (found at Applications
 ```bash
 if [ -d ~/src/PhysiCell ]
 then
-    echo
+    echo ''
     echo "ERROR : /Users/$USER/src/PhysiCell already exists!"
     echo 'please delete the folder if you want to do a reinstallation. installation terminated.'
 else
@@ -113,7 +113,7 @@ Copy the installation command, paste it into the Terminal (found at Applications
 ```bash
 if [ -d ~/src/PhysiCell-Studio ]
 then
-    echo
+    echo ''
     echo "ERROR : /Users/$USER/src/PhysiCell-Studio already exists!"
     echo 'please delete the folder if you want to do a reinstallation. installation terminated.'
 else
