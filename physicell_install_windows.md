@@ -129,8 +129,8 @@ if ($install -eq $uart) {
     Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
     pip3.exe install -r PhysiCell-Studio\requirements.txt
     Set-Location ~\src\pcvenv\Scripts
-    "python.exe C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $args" > pcstudio.ps1
-    "python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*" > pcstudio.exe
+    Set-Content -Path pcstudio.ps1 -Value "python.exe C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $args"
+    Set-Content -Path pcstudio.exe -Value "python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*"
     Set-Location ~\src
 } else {
     'installation terminated.'
