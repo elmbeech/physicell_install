@@ -28,11 +28,13 @@ Copy past the code below into the shell and press the enter key.
 
 ```bash
 install='Y'
-uart='Y'
+uart='None'
 if [ -d /c/Users/$USER/src/PhysiCell ]
 then
     echo "WARNING : /c/Users/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]"
     read uart
+else
+    uart='Y'
 fi
 if [ $install == $uart ]
 then
@@ -101,9 +103,11 @@ Copy past the code below into the shell and press the enter key.
 
 ```powershell
 $install = 'Y'
-$uart = 'Y'
+$uart = 'None'
 if (Test-Path ~\src\PhysiCell-Studio) {
     $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+} else {
+    $uart = 'Y'
 }
 if ($install -eq $uart) {
     if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }

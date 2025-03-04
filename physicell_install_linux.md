@@ -82,11 +82,13 @@ sudo apt install python3-pip
 
 ```bash
 install='Y'
-uart='Y'
+uart='None'
 if [ -d ~/src/PhysiCell ]
 then
     echo "WARNING : /home/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]"
     read uart
+else
+    uart='Y'
 fi
 if [ $install == $uart ]
 then
@@ -136,11 +138,13 @@ We will name this python3 environment pcvenv (PhysiCell virtual environment).
 
 ```bash
 install='Y'
-uart='Y'
+uart='None'
 if [ -d ~/src/PhysiCell-Studio ]
 then
     echo "WARNING : /home/$USER/src/PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
     read uart
+else
+    uart='Y'
 fi
 if [ $install == $uart ]
 then
