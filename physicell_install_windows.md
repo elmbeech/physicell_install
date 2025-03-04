@@ -89,7 +89,7 @@ If you not already have installed python, please go to the Microsoft Store and i
 
 Open a PowerShell (v7.x) or WindowsPowerShell ~ the regular one, not the ISE and not the x86 one (v5.1)!
 
-If you wonder, why there is more than one PowerShell flavor, read this article. Our script will run in both flavors.
+If you wonder, why there is more than one PowerShell flavor, read this article. Our script will run on both flavors.
 + https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell
 
 
