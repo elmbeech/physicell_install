@@ -150,8 +150,7 @@ then
     then
         echo "alias pcvenv=\"source /home/$USER/src/pcvenv/bin/activate\"" >> ~/.bash_aliases
     fi
-    source ~/.bash_aliases
-    pcvenv
+    source /home/$USER/src/pcvenv/bin/activate
     curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip > download.zip
     unzip download.zip
     rm download.zip
