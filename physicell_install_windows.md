@@ -210,7 +210,7 @@ File | New Window with Profile
 Name: physicell
 Icon: choose something cool.
 Create
-Add Folder: Home/src
+Add Folder: C:\Users\<username>\src
 click the profile icon (default is a gearwheel) on the left side bottom corner.
 Profile > physicell
 ```
