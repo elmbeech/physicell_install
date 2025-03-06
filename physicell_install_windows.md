@@ -123,8 +123,8 @@ if ($install -eq $uart) {
     if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
         Add-Content -Path ~\Documents\WindowsPowerShell\profile.ps1 -Value "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"""
     }
-    if (Test-Path C:\msys64\home\epb\.bash_profile) {} else { New-Item ~\.bash_profile }
-    $scavenge = Get-Content C:\msys64\home\epb\.bash_profile
+    if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
+    $scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
     if ($scavenge -match 'alias pcvenv=') {} else {
         Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate"""
     }
