@@ -117,11 +117,10 @@ if ($install -eq $uart) {
     if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
     Set-Location ~\src
     python.exe -m venv pcvenv
-    if (Test-Path ~\Documents\WindowsPowerShell) {} else { New-Item ~\Documents\WindowsPowerShell -Type Directory }
-    if (Test-Path ~\Documents\WindowsPowerShell\profile.ps1) {} else { New-Item ~\Documents\WindowsPowerShell\profile.ps1 -Type File }
-    $scavenge = Get-Content ~\Documents\WindowsPowerShell\profile.ps1
+    if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
+    $scavenge = Get-Content $PROFILE
     if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
-        Add-Content -Path ~\Documents\WindowsPowerShell\profile.ps1 -Value "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"""
+        Add-Content -Path $PROFILE -Value "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"""
     }
     if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
     $scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
