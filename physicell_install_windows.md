@@ -21,6 +21,8 @@ pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_6
 
 ## &#x1FA9F; Basic PhyiCell installation
 
+Important: before you run the basic physicell installation, you have to install the operating system dependencies!
+
 ### &#x2728; Install PhysiCell:
 
 Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
