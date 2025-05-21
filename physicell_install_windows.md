@@ -145,12 +145,14 @@ if ($scavenge -match 'alias pcvenv=') {} else {
 Copy past (ctrl + v) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
 
 ```powershell
-pcvenv
+
 $install = 'Y'
 $uart = 'None'
 if (Test-Path ~\src\PhysiCell-Studio) {
+    pcvenv
     $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
 } else {
+    pcvenv
     $uart = 'Y'
 }
 if ($install -eq $uart) {
@@ -167,6 +169,7 @@ if ($install -eq $uart) {
 } else {
     'installation terminated.'
 }
+
 ```
 
 ### &#x2728; Run PhysiCell-Studio in PowerShell:
