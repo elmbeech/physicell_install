@@ -86,6 +86,8 @@ Note that because of that, you have to type out your username and cannot use the
 
 ```powershell
 Set-Location C:\msys64\home\<YOUR_USER_NAME>
+```
+```powershell
 New-Item -ItemType SymbolicLink -Path C:\msys64\home\<YOUR_USER_NAME>\shortcut -Target C:\Users\<YOUR_USER_NAME>
 ```
 
