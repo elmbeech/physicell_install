@@ -64,7 +64,7 @@ make template
 make -j8
 ```
 ```bash
-./project
+./project.exe
 ```
 ```bash
 make jpeg
@@ -79,14 +79,14 @@ make movie
 
 ### &#x2728; Optional: make a shortcut from your MSYS2 home to your Windows home folder.
 
-Run as Administrator a PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!
+Run as Administrator a PowerShell (v7.x) or run as Administrator a WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!
 
-Note, this time you have to run the shell as an administrator.
-Usually, you do not have to do this!
+Note that this time you have to run the shell as an administrator.
+Note that because of that, you have to type out your username and cannot use the $USER variable.
 
 ```powershell
-Set-Location C:\msys64\home\$USER
-New-Item -ItemType SymbolicLink -Path C:\msys64\home\$USER\shortcut -Target C:\Users\$USER
+Set-Location C:\msys64\home\<YOUR_USER_NAME>
+New-Item -ItemType SymbolicLink -Path C:\msys64\home\<YOUR_USER_NAME>\shortcut -Target C:\Users\<YOUR_USER_NAME>
 ```
 
 Now, when you have opened a MSYS2 MINGW64 shell (e.g., to run PhysiCell), to change to your Windows home directory, you can simply do:
@@ -98,13 +98,12 @@ cd shortcut
 
 ## &#x1FA9F; Essential installation
 
-We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries.
-We will name this python3 environment pcvenv (PhysiCell virtual environment).
+We will generate a Python3 environment with the default Python installation, where we will install all PhysiCell modeling related Python libraries.
+We will name this Python3 environment pcvenv (PhysiCell virtual environment).
 
 ### &#x2728; Install Python:
 
-If you not already have installed python, please go to the Microsoft Store and **install** the latest **python** from the Python Software Foundation.
-
+If you have not already installed Python, please go to https://www.python.org/downloads/ and **install** the latest **Python** source release.
 
 ### &#x2728; Get the Windows PowerShell ready:
 
@@ -113,7 +112,7 @@ Open a PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the 
 If you wonder, why there is more than one PowerShell flavor, read this article. Our script will run on both flavors.
 + https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell
 
-To activate python environments, we have to be able to run PowerShell scripts.
+To activate Python environments, we have to be able to run PowerShell scripts.
 This is why we have to change the execution policy.
 Please run the command below and confirm with Y.
 
@@ -123,7 +122,26 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 ### &#x2728; Install PhysiCell-Studio:
 
-Copy past (ctrl + v) the code below into the shell and press the enter key.
+Copy past (ctrl + v) the code below into the shell and press the enter key to generate and activate the pcvenev virtual Python environment.
+
+```powershell
+if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
+Set-Location ~\src
+python.exe -m venv pcvenv
+if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
+$scavenge = Get-Content $PROFILE
+if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
+    Add-Content -Path $PROFILE -Value "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"""
+}
+if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
+$scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
+if ($scavenge -match 'alias pcvenv=') {} else {
+    Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate"""
+}
+."C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
+```
+
+Copy past (ctrl + v) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
 
 ```powershell
 $install = 'Y'
@@ -134,20 +152,7 @@ if (Test-Path ~\src\PhysiCell-Studio) {
     $uart = 'Y'
 }
 if ($install -eq $uart) {
-    if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
-    Set-Location ~\src
-    python.exe -m venv pcvenv
-    if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
-    $scavenge = Get-Content $PROFILE
-    if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
-        Add-Content -Path $PROFILE -Value "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"""
-    }
-    if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
-    $scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
-    if ($scavenge -match 'alias pcvenv=') {} else {
-        Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate"""
-    }
-    ."C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
+    pcvenv
     curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
     Expand-Archive -Path download.zip -DestinationPath .
     Remove-Item download.zip
@@ -192,7 +197,7 @@ pcstudio.exe
 
 ### &#x2728; Install Python:
 
-If you not already have installed Python, please go to the Microsoft Store and **install** the latest **Python** from the Python Software Foundation.
+If you have not already installed Python, please go to https://www.python.org/downloads/ and **install** the latest **Python** source release.
 
 ### &#x2728; Install PhysiCell Data Loader (pcdl) and iPython:
 
@@ -267,6 +272,7 @@ View | Command Palette… | Preferences: Open Workspace Settings (JSON)
 copy the msys2 configuration json for visual studio code (not sublime text!) found at  https://www.msys2.org/docs/ides-editors/#visual-studio-code and pasted it into the vs code settings.json .
 
 ```
+now, important: replace the -ucrt64 parameter with -mingw64 parameter.
 close the settings.json tab # a dialog window will pop up.
 click Save
 Terminal| New Terminal # a msys2 shell integrated into the vs code IDE should open.
