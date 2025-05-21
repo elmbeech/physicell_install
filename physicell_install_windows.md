@@ -145,6 +145,7 @@ if ($scavenge -match 'alias pcvenv=') {} else {
 Copy past (ctrl + v) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
 
 ```powershell
+pcvenv
 $install = 'Y'
 $uart = 'None'
 if (Test-Path ~\src\PhysiCell-Studio) {
@@ -153,7 +154,6 @@ if (Test-Path ~\src\PhysiCell-Studio) {
     $uart = 'Y'
 }
 if ($install -eq $uart) {
-    pcvenv
     curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
     Expand-Archive -Path download.zip -DestinationPath .
     Remove-Item download.zip
