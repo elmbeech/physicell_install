@@ -140,7 +140,6 @@ $scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
 if ($scavenge -match 'alias pcvenv=') {} else {
     Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate"""
 }
-."C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"
 ```
 
 Copy past (ctrl + v) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
