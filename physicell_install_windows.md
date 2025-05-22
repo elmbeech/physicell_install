@@ -124,7 +124,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 ### &#x2728; Install PhysiCell-Studio:
 
-Copy past (use ctrl + v for copy and not the button) the code below into the shell and press the enter key to generate the pcvenev virtual Python environment.
+Copy past (use ctrl + v for paste and not the mouse menue) the code below into the shell and press the enter key to generate the pcvenev virtual Python environment.
 
 ```powershell
 if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
@@ -142,7 +142,7 @@ if ($scavenge -match 'alias pcvenv=') {} else {
 }
 ```
 
-Copy past (use ctrl + v for copy and not the button) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
+Copy past (use ctrl + v for paste and not the mouse menue) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
 
 ```powershell
 if (Test-Path ~\src\pcvenv) {
