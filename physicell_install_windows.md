@@ -6,7 +6,7 @@ If you prefer another folder name, please adjust the commands accordingly.
 
 ## &#x1FA9F; Operating system dependencies
 
-### &#x2728; Download and install MSYS2 x86_64:
+### &#x2728; Download and install MSYS2 x86\_64:
 
 + https://www.msys2.org/
 
@@ -124,7 +124,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 ### &#x2728; Install PhysiCell-Studio:
 
-Copy past (ctrl + v) the code below into the shell and press the enter key to generate and activate the pcvenev virtual Python environment.
+Copy past (use ctrl + v for copy and not the button) the code below into the shell and press the enter key to generate the pcvenev virtual Python environment.
 
 ```powershell
 if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
@@ -142,34 +142,35 @@ if ($scavenge -match 'alias pcvenv=') {} else {
 }
 ```
 
-Copy past (ctrl + v) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
+Copy past (use ctrl + v for copy and not the button) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
 
 ```powershell
-
-$install = 'Y'
-$uart = 'None'
-if (Test-Path ~\src\PhysiCell-Studio) {
-    pcvenv
-    $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+if (Test-Path ~\src\pcvenv) {
+    $install = 'Y'
+    $uart = 'None'
+    if (Test-Path ~\src\PhysiCell-Studio) {
+        $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+    } else {
+        $uart = 'Y'
+    }
+    if ($install -eq $uart) {
+        pcvenv
+        curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
+        Expand-Archive -Path download.zip -DestinationPath .
+        Remove-Item download.zip
+        if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio -Recurse }
+        Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+        pip3.exe install -r PhysiCell-Studio\requirements.txt
+        Set-Location ~\src\pcvenv\Scripts
+        Set-Content -Path pcstudio.ps1 -Value "python.exe C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $args"
+        Set-Content -Path pcstudio.exe -Value "python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*"
+        Set-Location ~\src
+    } else {
+        'installation terminated.'
+    }
 } else {
-    pcvenv
-    $uart = 'Y'
+    'ERROR : pcvenv virtual Python environment could not be detected. please run the code cell above to generate the pcvenev virtual Python environment!'
 }
-if ($install -eq $uart) {
-    curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
-    Expand-Archive -Path download.zip -DestinationPath .
-    Remove-Item download.zip
-    if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio -Recurse }
-    Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
-    pip3.exe install -r PhysiCell-Studio\requirements.txt
-    Set-Location ~\src\pcvenv\Scripts
-    Set-Content -Path pcstudio.ps1 -Value "python.exe C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $args"
-    Set-Content -Path pcstudio.exe -Value "python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*"
-    Set-Location ~\src
-} else {
-    'installation terminated.'
-}
-
 ```
 
 ### &#x2728; Run PhysiCell-Studio in PowerShell:
