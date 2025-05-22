@@ -127,20 +127,31 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 Copy past (use ctrl + v for paste and not the mouse menue) the code below into the shell and press the enter key to generate the pcvenev virtual Python environment.
 
 ```powershell
-if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
-Set-Location ~\src
-python.exe -m venv pcvenv
-if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
-$scavenge = Get-Content $PROFILE
-if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
-    Add-Content -Path $PROFILE -Value "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"""
+$install = 'Y'
+$uart = 'None'
+if (Test-Path ~\src\pcvenv) {
+    $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\pcvenv already exists! do you wanna re-install the pcvenv Python environment? data will be lost, and PhysiCell-Studio has to be re-installed too! [Y,N]"
+} else {
+    $uart = 'Y'
 }
-if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
-$scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
-if ($scavenge -match 'alias pcvenv=') {} else {
-    Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate"""
+if ($install -eq $uart) {
+    if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
+    Set-Location ~\src
+    python.exe -m venv pcvenv
+    if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
+    $scavenge = Get-Content $PROFILE
+    if ($scavenge -match 'Set-Alias -Name pcvenv -Value') {} else {
+        Add-Content -Path $PROFILE -Value "Set-Alias -Name pcvenv -Value ""C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1"""
+    }
+    if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
+    $scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
+    if ($scavenge -match 'alias pcvenv=') {} else {
+        Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value "alias pcvenv=""source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate"""
+    }
+    'pcvenv virtual Python environment generated.'
+} else {
+    'installation terminated.'
 }
-'pcvenv virtual Python environment generated.'
 ```
 
 Copy past (use ctrl + v for paste and not the mouse menue) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
@@ -150,7 +161,7 @@ if (Test-Path ~\src\pcvenv) {
     $install = 'Y'
     $uart = 'None'
     if (Test-Path ~\src\PhysiCell-Studio) {
-        $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]"
+        $uart = Read-Host "WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install PhysiCell-Studio? data will be lost! [Y,N]"
     } else {
         $uart = 'Y'
     }
