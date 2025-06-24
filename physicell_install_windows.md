@@ -12,6 +12,7 @@ If you prefer another folder name, please adjust the commands accordingly.
 
 ### &#x2728; Install GCC, ImageMagick, Unzip, Zip, and ca-certificates:
 
+In the Windows Taskbar Search box, type msys2.
 Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
 
 ```bash
