@@ -13,7 +13,7 @@ If you prefer another folder name, please adjust the commands accordingly.
 ### &#x2728; Install GCC, ImageMagick, Unzip, Zip, and ca-certificates:
 
 In the Windows Taskbar Search box, type msys2.
-Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
+Open the MSYS2 MINGW64 shell ~ the one with the blue MSYS2 icon, no other color!
 
 ```bash
 pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ffmpeg unzip zip mingw-w64-x86_64-ca-certificates
@@ -26,7 +26,7 @@ Important: before you run the basic physicell installation, you have to install 
 
 ### &#x2728; Install PhysiCell:
 
-Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
+Open the MSYS2 MINGW64 shell ~ the one with the blue MSYS2 icon, no other color!
 Copy paste (mouse right click) the code below into the shell and press the enter key.
 
 ```bash
@@ -198,7 +198,7 @@ pcstudio.ps1
 
 ### &#x2728; Run PhysiCell-Studio in the MYSYS2 shell:
 
-Open the MSYS2 MINGW64 shell ~ the one with blue MSYS2 icon, no other color!
+Open the MSYS2 MINGW64 shell ~ the one with the blue MSYS2 icon, no other color!
 
 ```bash
 cd  /c/Users/$USER/src/PhysiCell
