@@ -55,8 +55,13 @@ fi
 
 ### &#x2728; Test the PhysiCell installation with the template sample project:
 
+Run this code line by line.
+
 ```bash
 cd /c/Users/$USER/src/PhysiCell
+```
+```bash
+make data-cleanup clean reset
 ```
 ```bash
 make template
@@ -80,10 +85,11 @@ make movie
 
 ### &#x2728; Optional: make a shortcut from your MSYS2 home to your Windows home folder.
 
-Run as Administrator a PowerShell (v7.x) or run as Administrator a WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!
+Run as Administrator a PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!
 
 Note that this time you have to run the shell as an administrator.
 Note that because of that, you have to type out your username and cannot use the $USER variable.
+Run this code line by line.
 
 ```powershell
 Set-Location C:\msys64\home\<YOUR_USER_NAME>
@@ -106,7 +112,7 @@ We will name this Python3 environment pcvenv (PhysiCell virtual environment).
 
 ### &#x2728; Install Python:
 
-If you have not already installed Python, please go to https://www.python.org/downloads/ and **install** the latest **Python** source release.
+If you have not already installed Python, please go to https://www.python.org/downloads/ and **install** the latest **Python** release.
 
 ### &#x2728; Get the Windows PowerShell ready:
 
@@ -155,6 +161,7 @@ if ($install -eq $uart) {
 }
 ```
 
+Open a fresh PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!
 Copy past (use ctrl + v for paste and not the mouse menue) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.
 
 ```powershell
@@ -188,21 +195,35 @@ if (Test-Path ~\src\pcvenv) {
 
 ### &#x2728; Run PhysiCell-Studio in PowerShell:
 
-Open a PowerShell (v7.x) or WindowsPowerShell ~ the regular one, not the ISE and not the x86 one (v5.1)!
+Open a fresh PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!
+Run this code line by line.
+
+Note the pcstudio **ps1** extension.
 
 ```powershell
 Set-Location ~\src\PhysiCell
+```
+```powershell
 pcvenv
+```
+```powershell
 pcstudio.ps1
 ```
 
 ### &#x2728; Run PhysiCell-Studio in the MYSYS2 shell:
 
 Open the MSYS2 MINGW64 shell ~ the one with the blue MSYS2 icon, no other color!
+Run this code line by line.
+
+Note the pcstudio **exe** extension.
 
 ```bash
 cd  /c/Users/$USER/src/PhysiCell
+```
+```bash
 pcvenv
+```
+```bash
 pcstudio.exe
 ```
 
@@ -220,20 +241,28 @@ If you have not already installed Python, please go to https://www.python.org/do
 ### &#x2728; Install PhysiCell Data Loader (pcdl) and iPython:
 
 Open a PowerShell or MSYS2 MINGW64 shell.
+Run this code line by line.
 
 ```bash
 pcvenv
+```
+```bash
 pip3.exe install pcdl ipython
 ```
+
 ### &#x2728; Test the pcdl installation:
+
+Fire up a python shell.
 
 ```bash
 ipython
 ```
+
+Inside the python shell write:
+
 ```python
 import pcdl
-```
-```python
+print(pcdl.__version__)
 exit()
 ```
 
@@ -249,7 +278,7 @@ exit()
 2. Generate a vs code profile for physicell:
 
 ```
-File | New Window with Profile
+File | New Window with Profile > New Profile …
 Name: physicell
 Icon: choose something cool.
 Create
@@ -261,7 +290,7 @@ Profile > physicell
 3. Open the Folder:
 
 ```
-File | Open Folder… | src | Open
+File | Open Folder… | C:\Users\<username>\src | Add Folder
 Yes, I trust the authors
 ```
 
@@ -277,21 +306,34 @@ Extension: C/C++ Install
 5. Link pcvenv (the python environment we generated above):
 
 ```
-View | Command Palette… | Python: Select Interpreter |
-Enter interpreter path… | Find… | src/pcvenv
+View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | C:\Users\<username>\src\pcvenv\Scripts\python.exe
 ```
 
-6. Link msys2 MINGW64 as default shelll:
+6. Link msys2 MINGW64 shell:
 
 ```
-View | Command Palette… | Preferences: Open Workspace Settings (JSON)
+View | Command Palette… | Preferences: Open User Settings (JSON)
 ```
 
-copy the msys2 configuration json for visual studio code (not sublime text!) found at  https://www.msys2.org/docs/ides-editors/#visual-studio-code and pasted it into the vs code settings.json .
+copy the msys2 configuration json (https://www.json.org/json-en.html) for visual studio code (not sublime text!) found at  https://www.msys2.org/docs/ides-editors/#visual-studio-code and past it into the vs code settings.json .
 
 ```
-now, important: replace the -ucrt64 parameter with -mingw64 parameter.
+IMPORTANT:
+replace the MSYS2 UCRT name with MSYS2 MINGW64.
+replace the -ucrt64 parameter with -mingw64.
 close the settings.json tab # a dialog window will pop up.
 click Save
+```
+
+Now we make msys2 MINGW64 the default shell for the physicell profile.
+
+```
+View | Command Palette… | Terminal: Select Default Profile
+Choose MSYS2 MINGW64 (with the cmd.exe /c "C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64" argument).
+```
+
+And open a default shell.
+
+```
 Terminal| New Terminal # a msys2 shell integrated into the vs code IDE should open.
 ```
