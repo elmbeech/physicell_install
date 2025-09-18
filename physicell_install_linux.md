@@ -115,10 +115,10 @@ fi
 Run this code line by line.
 
 ```bash
-make data-cleanup clean reset
+cd ~/src/PhysiCell
 ```
 ```bash
-cd ~/src/PhysiCell
+make data-cleanup clean reset
 ```
 ```bash
 make template
