@@ -61,7 +61,7 @@ Run this code line by line.
 cd /c/Users/$USER/src/PhysiCell
 ```
 ```bash
-make data-cleanup clean reset
+make data-cleanup clean reset  # ./config/PhysiCell_settings-backup.xml related Error can be ignored!
 ```
 ```bash
 make template
