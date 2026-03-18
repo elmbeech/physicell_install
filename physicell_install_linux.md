@@ -235,7 +235,8 @@ exit()
 
 ## &#x1F427; IDE VSCode integration (optional)
 
-1. Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .
+1. Install vs code, either from your operating system’s distrio or from https://code.visualstudio.com/ .
+   Note: flatpack will not work; it cannot handle the pcvenv virtual python environment correctly that we generated!
 
 2. Generate a vs code profile for physicell:
 
@@ -268,5 +269,5 @@ Extension: C/C++ Install
 5. Link pcvenv (the python environment we generated above):
 
 ```
-View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | /home/<username>/src/pcvenv/bin/activate
+View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | /home/<username>/src/pcvenv/bin/python3
 ```

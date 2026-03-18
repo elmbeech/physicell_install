@@ -225,5 +225,5 @@ Extension: C/C++ Install
 5. Link pcvenv (the python environment we generated above):
 
 ```
-View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | Users/<username>/src/pcvenv/bin/activate
+View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | Users/<username>/src/pcvenv/bin/python3
 ```
